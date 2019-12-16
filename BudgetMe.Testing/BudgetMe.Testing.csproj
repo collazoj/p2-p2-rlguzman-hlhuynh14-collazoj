@@ -13,4 +13,10 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BudgetMe.Client\BudgetMe.Client.csproj" />
+    <ProjectReference Include="..\BudgetMe.Domain\BudgetMe.Domain.csproj" />
+    <ProjectReference Include="..\BudgetMe.Storing\BudgetMe.Storing.csproj" />
+  </ItemGroup>
+
 </Project>

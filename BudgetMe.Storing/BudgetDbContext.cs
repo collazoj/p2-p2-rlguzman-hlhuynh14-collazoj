@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BudgetMe.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetMe.Storing
@@ -11,7 +12,6 @@ namespace BudgetMe.Storing
       public DbSet<Goal> Goal { get; set; }
       public DbSet<Income> Income { get; set; }
       public DbSet<Member> Member { get; set; }
-      public DbSet<Tax> Tax { get; set; }
 
 
 
