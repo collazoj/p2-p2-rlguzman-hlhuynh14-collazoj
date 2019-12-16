@@ -22,12 +22,12 @@ namespace BudgetMe.Domain.Controllers
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMember(int id)
     {
-      return await Task.FromResult(Ok(_mr.GetMember(id)));
+      return await Task.FromResult(Ok(_db.Member.FirstOrDefault(p => p.Id == id)));
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
     {
-      return await Task.FromResult(Ok(_mr.GetBudget(id)));
+      return await Task.FromResult(Ok(_db.Budget.FirstOrDefault(p => p.Id == id)));
     }
     //Income
     [HttpPost]
@@ -41,7 +41,6 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
     public async Task<IActionResult> UpdateIncome(Income income)
     {
       if (ModelState.IsValid)
@@ -51,7 +50,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-    [HttpPost]
+ [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteIncome(int id)
     {
       if (ModelState.IsValid)
@@ -82,7 +81,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
+ [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBill(int id)
     {
       if (ModelState.IsValid)
@@ -117,7 +116,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
+  [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteGoal(int id)
     {
       if (ModelState.IsValid)
@@ -149,7 +148,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
+ [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteExpense(int id)
     {
       if (ModelState.IsValid)
