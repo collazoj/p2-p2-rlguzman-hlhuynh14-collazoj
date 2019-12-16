@@ -6,6 +6,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BudgetMe.Storing\BudgetMe.Storing.csproj" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.entityframeworkcore.design" Version="3.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="npgsql.entityframeworkcore.postgresql" Version="3.1.0" />
+    <PackageReference Include="npgsql.entityframeworkcore.postgresql.design" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
