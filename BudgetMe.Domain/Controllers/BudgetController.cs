@@ -51,7 +51,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
+    [HttpPost]
     public async Task<IActionResult> DeleteIncome(int id)
     {
       if (ModelState.IsValid)
