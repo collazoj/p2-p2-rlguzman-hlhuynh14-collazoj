@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BudgetMe.Domain.Models;
+using BudgetMe.Storing.Models;
 
 namespace BudgetMe.Storing.Interface
 {

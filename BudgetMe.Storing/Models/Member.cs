@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BudgetMe.Domain.Models
+namespace BudgetMe.Storing.Models
 {
   public class Member
     {
@@ -8,6 +8,6 @@ namespace BudgetMe.Domain.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<Budget> BudgetList { get; set; }
+        public Budget Budget { get; set; }
     }
 }

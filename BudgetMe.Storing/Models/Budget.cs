@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BudgetMe.Domain.Models
+namespace BudgetMe.Storing.Models
 {
   public class Budget
     {   

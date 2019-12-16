@@ -1,8 +1,8 @@
-﻿using BudgetMe.Domain.Models;
+﻿using BudgetMe.Storing.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BudgetMe.Domain.Models
+namespace BudgetMe.Storing.Models
 {
   public class MemberService 
     {

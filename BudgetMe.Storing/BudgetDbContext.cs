@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BudgetMe.Domain.Models;
+using BudgetMe.Storing.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetMe.Storing
