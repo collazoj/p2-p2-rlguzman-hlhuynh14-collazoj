@@ -1,0 +1,83 @@
+﻿@model BudgetMe.Client.Models.Goal
+
+@{
+    ViewData["Title"] = "DeleteGoal";
+    Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<h2>Delete Goal</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsSavings)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GoalsSavings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalSavingsPerMonth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GoalSavingsPerMonth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthGoals)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MonthGoals)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanTermInYears)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LoanTermInYears)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InterestRate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedHighLoan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedHighLoan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedLowLoan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedLowLoan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedHighTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedHighTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedLowTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedLowTotal)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteGoal">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" />
+      
+    </form>
+</div>

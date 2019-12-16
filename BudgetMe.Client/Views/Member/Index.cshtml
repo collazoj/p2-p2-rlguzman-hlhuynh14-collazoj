@@ -1,0 +1,112 @@
+﻿@model BudgetMe.Client.Models.Member
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+
+
+    <div>
+        <h2>@Model.FirstName @Model.LastName ' s Home Page</h2>
+        <hr />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Budget (In Dollars)</h3>
+                    @foreach (var item in Model.BudgetList)
+                    {
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(modelItem => item.Name)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </dd>
+                            <dt>
+                                Total Monthly Income:
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.TotalMonthlyNetIncome)
+                            </dd>
+                            <dt>
+                                After Bills:
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.RemainderAfterBill)
+                            </dd>
+                            <dt>
+                                After Saving:
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.RemainderAfterGoals)
+                            </dd>
+                            <dt>
+                                Remainder:
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(modelItem => item.RemainderAfterExpenses)
+                            </dd>
+                        </dl>
+
+                    }
+                    </div>
+                        <div class="col-md-4">
+
+                        <div id="chart2"></div>
+                     
+                         </div>
+           
+            </div>
+                    
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+            @section scripts{
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart() {
+
+            let bills = @Model.BudgetList[0].TotalMonthlyNetIncome - @Model.BudgetList[0].RemainderAfterBill;
+            let goals = @Model.BudgetList[0].RemainderAfterBill - @Model.BudgetList[0].RemainderAfterGoals;
+            let expenses = @Model.BudgetList[0].RemainderAfterBill - @Model.BudgetList[0].RemainderAfterExpenses;
+            let remainder = @Model.BudgetList[0].RemainderAfterExpenses;
+
+
+
+
+           var data2 = google.visualization.arrayToDataTable([
+          ['Expenses', 'Amount'],
+          ['Bills', bills],
+          ['Goals',      goals],
+          ['Expenses',  expenses],
+          ['Remainder', remainder],
+        ]);
+
+            var option = {
+                title: 'Budget Pie Chart',
+                width: 400,
+                height: 400,
+                backgroundColor: 'transparent',
+                legend: {textStyle: {color: 'green'}}
+            };
+
+        option.is3D = true;
+            chart = new google.visualization.PieChart(document.getElementById('chart2'));
+            chart.draw(data2, option);
+
+        }
+                </script>
+  }

@@ -1,0 +1,75 @@
+﻿@model BudgetMe.Client.Models.Goal
+
+@{
+    ViewData["Title"] = "CalculateGoal";
+ Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<h2>Estimated buying power within @Model.MonthGoals months.</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name of Goal:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Current Savings:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GoalsSavings)
+        </dd>
+        <dt>
+            Savings Per Month:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GoalSavingsPerMonth)
+        </dd>
+        <dt>
+           Months saving @Model.GoalSavingsPerMonth for:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MonthGoals)
+        </dd>
+        <dt>
+           Loan payment years:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LoanTermInYears)
+        </dd>
+        <dt>
+            Your estimated interest rate:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InterestRate)
+        </dd>
+        <dt>
+            The estimated highest loan:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedHighLoan)
+        </dd>
+        <dt>
+            The estimated lowest loan:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedLowLoan)
+        </dd>
+        <dt>
+           High Buying power, after savings: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedHighTotal)
+        </dd>
+        <dt>
+            Low Buying power, after savings:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedLowTotal)
+        </dd>
+    </dl>
+</div>
+

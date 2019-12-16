@@ -1,8 +1,118 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <body>
+        <h1>Welcome to Budget Pages</h1>
+        <form method="post">
+            <fieldset>
+                <legend>Monthly Mini Budget</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <label for="netPay">Monthly Net Pay:</label>
+                            <input type="text" id="netPay" value="0" />
+                        </div>
+                        <div>
+                            <label for="netPay2">Extra Income:</label>
+                            <input type="text" id="netPay2" value="0" />
+                        </div>
+                        <br />
+                        <h4>Expenses</h4>
+                        <div>
+                            <label for="housing">Housing:</label>
+                            <input type="text" id="housing" value="0" />
+                        </div>
+                        <div>
+                            <label for="utilities">Utilities:</label>
+                            <input type="text" id="utilities" value="0" />
+                        </div>
+                        <div>
+                            <label for="otherBills">Other Bills:</label>
+                            <input type="text" id="otherBills" value="0" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+
+                        <h4>Split Percentages</h4>
+                        <div>
+                            <label for="savings">Savings:</label>
+                            <input type="text" id="savings" value="20" />
+                        </div>
+                        <div>
+                            <label for="food">Food:</label>
+                            <input type="text" id="food" value="40" />
+                        </div>
+                        <div>
+                            <label for="entertainment">Entertainment:</label>
+                            <input type="text" id="entertainment" value="20" />
+                        </div>
+                        <div>
+                            <label for="others">Others:</label>
+                            <input type="text" id="others" value="20" />
+                        </div>
+                        <div>
+                            <label>&nbsp;</label>
+                            <input type="button" value="Calculate" onclick="CalculateBudget()" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label for="remaining">Remaining:</label>
+                            <input type="text" id="remaining" value="0" />
+                        </div>
+                        <h4>Each category gets</h4>
+
+                        <div>
+                            <label for="savings1">Savings:</label>
+                            <input type="text" id="savings1" value="0" />
+                        </div>
+                        <div>
+                            <label for="food1">Food:</label>
+                            <input type="text" id="food1" value="0" />
+                        </div>
+                        <div>
+                            <label for="entertainment1">Entertainment:</label>
+                            <input type="text" id="entertainment1" value="0" />
+                        </div>
+                        <div>
+                            <label for="others1">Others:</label>
+                            <input type="text" id="others1" value="0" />
+                        </div>
+
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Budget Visualization</h3>
+                <h5>Budget Pages allows you to create a budget plan for monthly necessities.</h5>
+                <!-- <img src="~/images/download (1).jpeg" /> -->
+            </div>
+            <div class="col-md-4">
+                <h3> Tax Estimation</h3>
+                <h5>Budget Pages will able to estimate your taxes and show you visualization of where your money goes.</h5>
+                <!-- <img src="~/images/images.jpeg" />> -->
+            </div>
+            <div class="col-md-4">
+                <h3>Goals Realization</h3>
+                <h5>Budget Pages will estimate how much your total buying power base on how much you plan to save monthly.</h5>
+                <!-- <img src="~/images/Create-Multiple-Savings-Goals.jpg" /> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-5">
+            </div>
+        </div>
+
+
+</body>

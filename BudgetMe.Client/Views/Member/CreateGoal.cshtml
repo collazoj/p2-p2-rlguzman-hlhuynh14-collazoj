@@ -1,0 +1,57 @@
+﻿@model BudgetMe.Client.Models.Goal
+
+@{
+    ViewData["Title"] = "CreateGoal";
+    Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<h2>Create a goal</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateGoal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name/Description</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalsSavings" class="control-label"> How much is your current savings for this goal?</label>
+                <input asp-for="GoalsSavings" class="form-control" />
+                <span asp-validation-for="GoalsSavings" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalSavingsPerMonth" class="control-label">How much do you plan to save per month?</label>
+                <input asp-for="GoalSavingsPerMonth" class="form-control" />
+                <span asp-validation-for="GoalSavingsPerMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthGoals" class="control-label">How long do you plan to save in months?</label>
+                <input asp-for="MonthGoals" class="form-control" />
+                <span asp-validation-for="MonthGoals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoanTermInYears" class="control-label">How long would it take you to pay back this loan in years?</label>
+                <input asp-for="LoanTermInYears" class="form-control" />
+                <span asp-validation-for="LoanTermInYears" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InterestRate" class="control-label">What is the interest rate on this loan?</label>
+                <input asp-for="InterestRate" class="form-control" />
+                <span asp-validation-for="InterestRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
