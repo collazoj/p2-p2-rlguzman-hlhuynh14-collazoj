@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using BudgetMe.Domain.Models;
 
-namespace SaveEm.Storing.Adapters
+namespace BudgetMe.Storing.Adapters
 {
     public class OrmAdapter
     {
@@ -38,10 +39,6 @@ namespace SaveEm.Storing.Adapters
           return _db.Member.ToList();
         }
 
-        public List<Tax> GetTaxes()
-        {
-          return _db.Tax.ToList();
-        }
 
 
         //Add and Save to DB Methods.
@@ -75,11 +72,7 @@ namespace SaveEm.Storing.Adapters
           _db.Member.Add(member);
           return _db.SaveChanges()==1;
         }
-        public bool InsertTax(Tax tax)
-        {
-          _db.Tax.Add(tax);
-          return _db.SaveChanges()==1;
-        }
+
 
         //Update DB object Methods
         public bool UpdateBudget(Budget budget)
@@ -110,11 +103,6 @@ namespace SaveEm.Storing.Adapters
         public bool UpdateMember(Member member)
         {
           _db.Member.Update(member);
-          return _db.SaveChanges()==1;
-        }
-        public bool UpdateTax(Tax tax)
-        {
-          _db.Tax.Update(tax);
           return _db.SaveChanges()==1;
         }
 
@@ -158,12 +146,7 @@ namespace SaveEm.Storing.Adapters
           _db.Member.Remove(member);
           return _db.SaveChanges()==1;
         }
-        public bool RemoveTax(int id)
-        {
-          Tax tax = _db.Tax.First(t => t.Id==id);
-          _db.Tax.Remove(tax);
-          return _db.SaveChanges()==1;
-        }
+
         public bool SaveDBChanges()
         {
           return _db.SaveChanges()==1;

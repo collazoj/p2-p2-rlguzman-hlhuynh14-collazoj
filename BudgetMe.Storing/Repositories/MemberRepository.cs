@@ -1,4 +1,10 @@
-namespace SaveEm.Storing.Repositories
+using System.Collections.Generic;
+using System.Linq;
+using BudgetMe.Domain.Models;
+using BudgetMe.Storing.Adapters;
+using BudgetMe.Storing.Interface;
+
+namespace BudgetMe.Storing.Repositories
 {
     public class MemberRepository : IMemberRepository
     {
@@ -33,10 +39,7 @@ namespace SaveEm.Storing.Repositories
         {
           return _oa.GetMembers();
         }
-        public List<Tax> GetTaxes()
-        {
-          return _oa.GetTaxes();
-        }
+
 
         //Grabs an object from the database given a specified id.
         public Budget GetBudget(int id)
@@ -79,12 +82,7 @@ namespace SaveEm.Storing.Repositories
           Member member = memberlist.Where(m => m.Id == id).SingleOrDefault();
           return member;
         }
-        public Tax GetTax(int id)
-        {
-          List<Tax> taxlist = GetTaxes();
-          Tax tax = taxlist.Where(t => t.Id==id).SingleOrDefault();
-          return tax;
-        }
+
 
         //Create and Add object onto DB
         public bool CreateBudget(string name, int memberid, double totalmonthlynetincome, double remainderafterbill, double percent, double remainderafterexpenses)
@@ -142,23 +140,7 @@ namespace SaveEm.Storing.Repositories
           member.LastName = lastname;
           return _oa.InsertMember(member);
         }
-        public bool CreateTax(string filingstatus, string stateabbreviation, double grossincome, double deductibles, double taxableincome, double federaltax, double statetax, double medicaretax, double sstax, double estnetincome, double estmonthlyincome, int memberid)
-        {
-          Tax tax = new Tax();
-          tax.FilingStatus = filingstatus;
-          tax.StateAbbrevation = stateabbreviation;
-          tax.GrossIncome = grossincome;
-          tax.Deductibles = deductibles;
-          tax.TaxableIncome = taxableincome;
-          tax.FederalTax = federaltax;
-          tax.StateTax = statetax;
-          tax.MedicareTax = medicaretax;
-          tax.SocialSecurityTax = sstax;
-          tax.EstimatedNetIncome = estnetincome;
-          tax.EstimatedMontlyIncome = estmonthlyincome;
-          tax.MemberId = memberid;
-          return _oa.InsertTax(tax);
-        }
+
 
         //Update a DB object Method
         public bool UpdateBill(Bill bill)
@@ -198,10 +180,7 @@ namespace SaveEm.Storing.Repositories
           income2.Name = income.Name;
           return _oa.UpdateIncome(income2);
         }
-        public bool UpdateTax(Tax tax)
-        {
-          return _oa.UpdateTax(tax);
-        }
+
 
 
         //Delete a DB object Methods
@@ -229,10 +208,7 @@ namespace SaveEm.Storing.Repositories
         {
           return _oa.RemoveMember(id);
         }
-        public bool DeleteTax(int id)
-        {
-          return _oa.RemoveTax(id);
-        }
+
 
         public bool SaveUpdates()
         {

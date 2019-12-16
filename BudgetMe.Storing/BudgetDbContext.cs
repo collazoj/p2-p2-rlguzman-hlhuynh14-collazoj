@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using BudgetMe.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace SaveEm.Storing
+namespace BudgetMe.Storing
 {
     public class BudgetDbContext : DbContext
     {
@@ -11,7 +12,6 @@ namespace SaveEm.Storing
       public DbSet<Goal> Goal { get; set; }
       public DbSet<Income> Income { get; set; }
       public DbSet<Member> Member { get; set; }
-      public DbSet<Tax> Tax { get; set; }
 
 
 
