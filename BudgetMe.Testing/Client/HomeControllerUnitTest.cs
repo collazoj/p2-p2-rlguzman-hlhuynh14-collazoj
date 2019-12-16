@@ -1,7 +1,7 @@
 using BudgetMe.Client.Controllers;
 using Xunit;
 
-namespace SaveEm.Testing.Client
+namespace BudgetMe.Testing.Client
 {
     public class HomeControllerUnitTest
     {
