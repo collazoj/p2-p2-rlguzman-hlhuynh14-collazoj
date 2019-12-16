@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using BudgetMe.Domain.Models;
+using BudgetMe.Storing.Models;
 using BudgetMe.Storing.Adapters;
 using BudgetMe.Storing.Interface;
 

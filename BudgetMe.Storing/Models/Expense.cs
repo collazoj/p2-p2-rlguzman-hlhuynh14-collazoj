@@ -1,6 +1,6 @@
-﻿using BudgetMe.Domain.Abstracts;
+﻿using BudgetMe.Storing.Abstracts;
 
-namespace BudgetMe.Domain.Models
+namespace BudgetMe.Storing.Models
 {
   public class Expense : ABalance
     {

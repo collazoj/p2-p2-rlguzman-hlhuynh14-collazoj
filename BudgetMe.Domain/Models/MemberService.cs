@@ -1,4 +1,4 @@
-﻿﻿using BudgetMe.Domain.Interfaces;
+﻿using BudgetMe.Domain.Interfaces;
 using BudgetMe.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;

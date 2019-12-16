@@ -1,6 +1,6 @@
-using BudgetMe.Domain.Models;
+using BudgetMe.Storing.Models;
 
-namespace BudgetMe.Domain.Abstracts
+namespace BudgetMe.Storing.Abstracts
 {
     public abstract class ABalance
     {
