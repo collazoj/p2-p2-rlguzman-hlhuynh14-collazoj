@@ -5,7 +5,6 @@ namespace BudgetMe.Testing.Domain
 {
   public class BudgetUnitTest
   {
-    [Fact]
     [Theory]
     [InlineData("Bob", 1000)]
     public async void Test_CreateIncome(string name, int amount)
