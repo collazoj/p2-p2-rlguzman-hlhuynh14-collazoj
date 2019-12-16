@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BudgetMe.Storing\BudgetMe.Storing.csproj" />
   </ItemGroup>
 
 </Project>
