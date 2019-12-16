@@ -1,0 +1,200 @@
+﻿@model BudgetMe.Client.Models.Budget
+
+@{
+    ViewData["Title"] = "SeeBudget";
+     Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<h1>@Model.Name</h1>
+
+<div>
+
+    <hr />
+    <div>
+        <h1 style="font-weight:bold">Incomes</h1>
+        <table class="table">
+            <tr>
+                <th>
+                    Name/Description
+                </th>
+                <th>
+                    Monthly Net Income
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model.IncomeList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Update Income", "UpdateIncome", new { id = item.Id }) |
+                        @Html.ActionLink("Delete Income", "DeleteIncome", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <a class="btn" asp-action="CreateIncome" asp-route-id="@Model.Id">Add a income</a>
+        <div>
+            <h3>Total Monthly Income: @Model.TotalMonthlyNetIncome</h3>
+        </div>
+    </div>
+    <hr />
+    <br />
+
+    <div>
+
+        <h1 style="font-weight:bold">Bills</h1>
+        <table class="table">
+
+            <tr>
+                <th>
+                    Name/Description
+                </th>
+                <th>
+                    Monthly Bill Amount
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model.BillList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Update Bill", "UpdateBill", new { id = item.Id }) |
+                        @Html.ActionLink("Delete Bill", "DeleteBill", new { id = item.Id })
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+        <a class="btn" asp-action="CreateBill" asp-route-id="@Model.Id">Add a bill</a>
+        <div>
+            <h3>Total after Bills are deducted: @Model.RemainderAfterBill</h3>
+        </div>
+    </div>
+    <hr />
+    <br />
+    <div>
+
+        <table class="table">
+            <h1 style="font-weight:bold">Goals</h1>
+            <tr>
+                <th>
+                    Name/Description
+                </th>
+                <th>
+                    Savings Per Month
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model.GoalList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GoalSavingsPerMonth)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "CalculateGoal", new { id = item.Id }) |
+                        @Html.ActionLink("Update Goal", "UpdateGoal", new { id = item.Id }) |
+                        @Html.ActionLink("Delete Goal", "DeleteGoal", new { id = item.Id })
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+        <a class="btn" asp-action="CreateGoal" asp-route-id="@Model.Id">Create a goal</a>
+        <div>
+            <h3>Total after Goals are deducted: @Model.RemainderAfterGoals</h3>
+        </div>
+    </div>
+    <hr />
+    <br />
+    <div>
+
+        <h1 style="font-weight:bold">Expenses</h1>
+        <table class="table">
+            <tr>
+                <th>
+                    Name/Description
+                </th>
+                <th>
+                    Percent (Whole Numbers)
+                </th>
+                <th>
+                    Monthly Amount
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model.ExpenseList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Percent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Update Expense", "UpdateExpense", new { id = item.Id }) |
+                        @Html.ActionLink("Delete Expense", "DeleteExpense", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <a class="btn" asp-action="CreateExpense" asp-route-id="@Model.Id">Add an expense</a>
+        <div>
+            <h3>Percent of Remainder Unused : @Model.Percent</h3>
+            <h3>Remaining Money : @Model.RemainderAfterExpenses</h3>
+        </div>
+    </div>
+</div>
+<br />
+<div>
+    <h2>
+        <a class="btn" asp-action="Calculate" asp-route-id="@Model.Id">Calculate</a>
+    </h2>
+</div>
