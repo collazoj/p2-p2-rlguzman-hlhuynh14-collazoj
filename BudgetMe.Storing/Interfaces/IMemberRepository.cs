@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SaveEm.Storing.Interface
+namespace BudgetMe.Storing.Interface
 {
     public interface IMemberRepository
     {

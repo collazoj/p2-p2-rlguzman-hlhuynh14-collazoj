@@ -1,6 +1,6 @@
 using System;
 
-namespace SaveEm.Domain.Models
+namespace BudgetMe.Domain.Models
 {
     public class ErrorViewModel
     {

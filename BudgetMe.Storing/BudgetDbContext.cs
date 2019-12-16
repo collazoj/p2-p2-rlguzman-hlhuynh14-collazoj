@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace SaveEm.Storing
+namespace BudgetMe.Storing
 {
     public class BudgetDbContext : DbContext
     {
@@ -29,9 +29,6 @@ namespace SaveEm.Storing
         builder.Entity<Member>().HasData(new List<Member>()
         {
           new Member(){Id = 1, FirstName = "Jimmy", LastName ="C"},
-          new Member(){Id = 2, FirstName = "Roberto", LastName="G"},
-          new Member(){Id = 3, FirstName = "John", LastName="H"},
-          new Member(){Id = 4, FirstName = "Henry", LastName="H"}
         });
       }
     }

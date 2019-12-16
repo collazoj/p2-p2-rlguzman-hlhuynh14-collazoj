@@ -1,11 +1,9 @@
-﻿using SaveEm.Domain.Interfaces;
-using SaveEm.Domain.Models;
-using SaveEm.Domain.Models.FederalTaxBrackets;
-using SaveEm.Domain.Models.StateTaxBrackets;
+﻿using BudgetMe.Domain.Interfaces;
+using BudgetMe.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SaveEm.Domain.Models
+namespace BudgetMe.Domain.Models
 {
   public class MemberService : IMemberService 
     {

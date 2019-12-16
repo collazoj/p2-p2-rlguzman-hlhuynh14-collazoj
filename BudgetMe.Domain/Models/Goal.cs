@@ -1,6 +1,6 @@
-﻿using SaveEm.Domain.Abstracts;
+﻿using BudgetMe.Domain.Abstracts;
 
-namespace SaveEm.Domain.Models
+namespace BudgetMe.Domain.Models
 {
   public class Goal : ABalance
     {

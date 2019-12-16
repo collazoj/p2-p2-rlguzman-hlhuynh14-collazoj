@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SaveEm.Domain.Models
+namespace BudgetMe.Domain.Models
 {
   public class Member
     {

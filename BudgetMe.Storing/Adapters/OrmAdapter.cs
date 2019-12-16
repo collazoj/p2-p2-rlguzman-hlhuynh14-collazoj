@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SaveEm.Storing.Adapters
+namespace BudgetMe.Storing.Adapters
 {
     public class OrmAdapter
     {

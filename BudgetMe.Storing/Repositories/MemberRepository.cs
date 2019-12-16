@@ -1,4 +1,4 @@
-namespace SaveEm.Storing.Repositories
+namespace BudgetMe.Storing.Repositories
 {
     public class MemberRepository : IMemberRepository
     {
