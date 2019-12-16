@@ -52,27 +52,6 @@ namespace BudgetMe.Domain.Controllers
       return await Task.FromResult(NotFound(id));
     }
 
-    // [HttpGet("{id}")]
-    // public async Task<IActionResult> Get(int id)
-    // {
-    //   _logger.LogInformation($"Get by Id Method {id}");
-    //   return await Task.FromResult(Ok(_db.Pokemon.FirstOrDefault(p => p.Id ==id)));
-    // }
-
-    // // public async Task<IActionResult> Post([FromBody]Pokemon poke) //If we didnt use ApiController
-    // [HttpPost]
-    // public async Task<IActionResult> Post(Pokemon poke)
-    // {
-    //   if (ModelState.IsValid)
-    //   {
-    //     _db.Pokemon.Add(poke);
-    //     _db.SaveChanges();
-
-    //     return await Task.FromResult(Ok(poke));
-    //   }
-
-    //   return await Task.FromResult(NotFound(poke));
-    // }
     public BudgetController(MemberRepository mr)
     {
       _mr = mr;

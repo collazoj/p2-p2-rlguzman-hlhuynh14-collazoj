@@ -17,17 +17,5 @@ namespace BudgetMe.Testing.Domain
     // assert
       Assert.IsType<Income>(actual);
     }
-  //  [Theory]
-  //   [InlineData(1)]
-  //   [InlineData(2)]
-  //   [InlineData(3)]
-  //   public void Test_GetPokemon(int id)
-  //   {
-  //     var sut = new PokemonController();
-  //     var actual = sut.Get(id);
-
-  //     Assert.False(string.IsNullOrWhiteSpace(actual.Name));      
-  //   }
-
   }
 }
