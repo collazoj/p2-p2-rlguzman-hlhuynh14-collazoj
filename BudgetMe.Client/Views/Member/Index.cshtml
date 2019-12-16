@@ -14,43 +14,39 @@
             <div class="row">
                 <div class="col-md-4">
                     <h3>Budget (In Dollars)</h3>
-                    @foreach (var item in Model.BudgetList)
-                    {
                         <dl class="dl-horizontal">
 
                             <dt>
-                                @Html.DisplayNameFor(modelItem => item.Name)
+                                @Html.DisplayNameFor(model => model.Budget.Name)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(modelItem => item.Name)
+                                @Html.DisplayFor(model => model.Budget.Name)
                             </dd>
                             <dt>
                                 Total Monthly Income:
                             </dt>
                             <dd>
-                                @Html.DisplayFor(modelItem => item.TotalMonthlyNetIncome)
+                                @Html.DisplayFor(model => model.Budget.TotalMonthlyNetIncome)
                             </dd>
                             <dt>
                                 After Bills:
                             </dt>
                             <dd>
-                                @Html.DisplayFor(modelItem => item.RemainderAfterBill)
+                                @Html.DisplayFor(model => model.Budget.RemainderAfterBill)
                             </dd>
                             <dt>
                                 After Saving:
                             </dt>
                             <dd>
-                                @Html.DisplayFor(modelItem => item.RemainderAfterGoals)
+                                @Html.DisplayFor(model => model.Budget.RemainderAfterGoals)
                             </dd>
                             <dt>
                                 Remainder:
                             </dt>
                             <dd>
-                                @Html.DisplayFor(modelItem => item.RemainderAfterExpenses)
+                                @Html.DisplayFor(model => model.Budget.RemainderAfterExpenses)
                             </dd>
                         </dl>
-
-                    }
                     </div>
                         <div class="col-md-4">
 
@@ -79,10 +75,10 @@
 
         function drawChart() {
 
-            let bills = @Model.BudgetList[0].TotalMonthlyNetIncome - @Model.BudgetList[0].RemainderAfterBill;
-            let goals = @Model.BudgetList[0].RemainderAfterBill - @Model.BudgetList[0].RemainderAfterGoals;
-            let expenses = @Model.BudgetList[0].RemainderAfterBill - @Model.BudgetList[0].RemainderAfterExpenses;
-            let remainder = @Model.BudgetList[0].RemainderAfterExpenses;
+            let bills = @Model.Budget.TotalMonthlyNetIncome - @Model.Budget.RemainderAfterBill;
+            let goals = @Model.Budget.RemainderAfterBill - @Model.Budget.RemainderAfterGoals;
+            let expenses = @Model.Budget.RemainderAfterBill - @Model.Budget.RemainderAfterExpenses;
+            let remainder = @Model.Budget.RemainderAfterExpenses;
 
 
 
