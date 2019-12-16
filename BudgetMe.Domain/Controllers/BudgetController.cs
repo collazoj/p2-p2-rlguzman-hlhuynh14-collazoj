@@ -9,13 +9,12 @@ using BudgetMe.Storing.Models;
 namespace BudgetMe.Domain.Controllers
 {
   [Produces("application/json")]
-  // [Consumes("application/json")]
   [Route("/api/[Controller]/[action]")]
   [ApiController]
   public class BudgetController : ControllerBase
   {
     private readonly MemberRepository _mr = new MemberRepository();
-    [HttpGet()]
+    [HttpPost]
     public async Task<IActionResult> CreateIncome(string name, int amount)
     {
       if (ModelState.IsValid)
@@ -28,7 +27,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
+    [HttpPost]
     public async Task<IActionResult> UpdateIncome(string name, int amount)
     {
       if (ModelState.IsValid)
@@ -41,7 +40,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-
+    [HttpPost]
     public async Task<IActionResult> DeleteIncome(int id)
     {
       if (ModelState.IsValid)
@@ -51,7 +50,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound(id));
     }
-
+  
     public BudgetController(MemberRepository mr)
     {
       _mr = mr;
