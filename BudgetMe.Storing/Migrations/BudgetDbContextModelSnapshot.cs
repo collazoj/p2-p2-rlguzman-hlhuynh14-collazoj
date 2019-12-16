@@ -72,7 +72,8 @@ namespace BudgetMe.Storing.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MemberId");
+                    b.HasIndex("MemberId")
+                        .IsUnique();
 
                     b.ToTable("Budget");
 
@@ -225,8 +226,8 @@ namespace BudgetMe.Storing.Migrations
             modelBuilder.Entity("BudgetMe.Storing.Models.Budget", b =>
                 {
                     b.HasOne("BudgetMe.Storing.Models.Member", "Member")
-                        .WithMany("BudgetList")
-                        .HasForeignKey("MemberId");
+                        .WithOne("Budget")
+                        .HasForeignKey("BudgetMe.Storing.Models.Budget", "MemberId");
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Expense", b =>

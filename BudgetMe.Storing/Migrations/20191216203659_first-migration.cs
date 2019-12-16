@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BudgetMe.Storing.Migrations
 {
-    public partial class _1_migration : Migration
+    public partial class firstmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace BudgetMe.Storing.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Name = table.Column<string>(nullable: true),
                     MemberId = table.Column<int>(nullable: true),
                     TotalMonthlyNetIncome = table.Column<double>(nullable: false),
@@ -145,6 +145,11 @@ namespace BudgetMe.Storing.Migrations
                 columns: new[] { "Id", "FirstName", "LastName" },
                 values: new object[] { 1, "Jimmy", "C" });
 
+            migrationBuilder.InsertData(
+                table: "Budget",
+                columns: new[] { "Id", "MemberId", "Name", "Percent", "RemainderAfterBill", "RemainderAfterExpenses", "RemainderAfterGoals", "TotalMonthlyNetIncome" },
+                values: new object[] { 1, 1, "jimmybudget", 0.0, 0.0, 0.0, 0.0, 0.0 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Bill_BudgetId",
                 table: "Bill",
@@ -153,7 +158,8 @@ namespace BudgetMe.Storing.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Budget_MemberId",
                 table: "Budget",
-                column: "MemberId");
+                column: "MemberId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Expense_BudgetId",

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BudgetMe.Storing.Migrations
 {
     [DbContext(typeof(BudgetDbContext))]
-    [Migration("20191216183514_1_migration")]
-    partial class _1_migration
+    [Migration("20191216203659_first-migration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,7 +49,7 @@ namespace BudgetMe.Storing.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
 
                     b.Property<int?>("MemberId")
                         .HasColumnType("integer");
@@ -74,9 +74,23 @@ namespace BudgetMe.Storing.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MemberId");
+                    b.HasIndex("MemberId")
+                        .IsUnique();
 
                     b.ToTable("Budget");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            MemberId = 1,
+                            Name = "jimmybudget",
+                            Percent = 0.0,
+                            RemainderAfterBill = 0.0,
+                            RemainderAfterExpenses = 0.0,
+                            RemainderAfterGoals = 0.0,
+                            TotalMonthlyNetIncome = 0.0
+                        });
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Expense", b =>
@@ -214,8 +228,8 @@ namespace BudgetMe.Storing.Migrations
             modelBuilder.Entity("BudgetMe.Storing.Models.Budget", b =>
                 {
                     b.HasOne("BudgetMe.Storing.Models.Member", "Member")
-                        .WithMany("BudgetList")
-                        .HasForeignKey("MemberId");
+                        .WithOne("Budget")
+                        .HasForeignKey("BudgetMe.Storing.Models.Budget", "MemberId");
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Expense", b =>
