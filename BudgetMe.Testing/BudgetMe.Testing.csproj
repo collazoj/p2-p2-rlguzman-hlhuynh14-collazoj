@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Debug>Full</Debug>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
