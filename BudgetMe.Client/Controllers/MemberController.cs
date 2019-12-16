@@ -68,13 +68,13 @@
             
 //             return RedirectToAction("SeeBudget", new { id });
 //         }
-//         [HttpPost]
+//         [HttpPut]
 //         public IActionResult UpdateIncome(int id)
 //         {
 //             Income income = clientModelMapper.ConvertDomainIncomeToClientIncome(memberRepository.GetIncome(id));
 //             return View(income);
 //         }
-//         [HttpPost]
+//         [HttpPut]
 //         [ValidateAntiForgeryToken]
 //         public IActionResult UpdateIncome(int id, Income newIncome)
 //         {
@@ -88,7 +88,7 @@
 //             Income income = clientModelMapper.ConvertDomainIncomeToClientIncome(memberRepository.GetIncome(id));
 //             return View(income);
 //         }
-//         [HttpPost]
+//         [HttpDelete]
 //         [ValidateAntiForgeryToken]
 //         public IActionResult DeleteIncome(int id, Income income)
 //         {
