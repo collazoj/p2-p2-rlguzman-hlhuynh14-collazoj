@@ -17,7 +17,7 @@ namespace BudgetMe.Storing
 
       protected override void OnConfiguring(DbContextOptionsBuilder dbContext)
       {
-        dbContext.UseNpgsql("server=localhost;database=postgres;user id=postgres;password=postgres");
+        dbContext.UseNpgsql("server=localhost;database=budgetdb;user id=postgres;password=postgres");
       }
 
       protected override void OnModelCreating(ModelBuilder builder)
@@ -30,6 +30,16 @@ namespace BudgetMe.Storing
         {
           new Member(){Id = 1, FirstName = "Jimmy", LastName ="C"},
         });
+
+        builder.Entity<Budget>(o => o.HasKey(k => k.Id));
+
+        builder.Entity<Budget>().Property(p => p.Id).UseSerialColumn();
+
+        builder.Entity<Budget>().HasData(new List<Budget>()
+        {
+          new Budget(){Id = 1, Name = "jimmybudget", MemberId=1, TotalMonthlyNetIncome=0, RemainderAfterBill=0, RemainderAfterGoals=0, Percent=0, RemainderAfterExpenses=0}
+        });
+
       }
     }
 }

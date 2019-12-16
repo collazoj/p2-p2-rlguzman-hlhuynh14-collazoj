@@ -3,15 +3,17 @@ using System;
 using BudgetMe.Storing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BudgetMe.Storing.Migrations
 {
     [DbContext(typeof(BudgetDbContext))]
-    partial class BudgetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191216194700_third_migration")]
+    partial class third_migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,6 @@ namespace BudgetMe.Storing.Migrations
                         new
                         {
                             Id = 1,
-                            MemberId = 1,
                             Name = "jimmybudget",
                             Percent = 0.0,
                             RemainderAfterBill = 0.0,
