@@ -158,5 +158,12 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound(id));
     }
+    public async Task<IActionResult> Calculate(int id)
+    {
+      Budget budget = _db.Budget.FirstOrDefault(p => p.Id == id);
+      budget.IncomeList = _db.Income.ToList();
+      memberService.GetNetIncome(budget, budget.IncomeList);
+      return await Task.FromResult(Ok(_db.Budget.FirstOrDefault(p => p.Id == id)));
+    }
   }
 }
