@@ -9,10 +9,11 @@ namespace BudgetMe.Storing.Repositories
     public class MemberRepository 
     {
 
-        private OrmAdapter _oa;
+        private OrmAdapter<BudgetDbContext> _oa;
         public MemberRepository()
         {
-          _oa = new OrmAdapter();          
+          BudgetDbContext _db = new BudgetDbContext();
+          _oa = new OrmAdapter<BudgetDbContext>(_db);
         }
 
         public List<Budget> GetBudgets()
