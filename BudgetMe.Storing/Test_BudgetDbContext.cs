@@ -4,16 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetMe.Storing
 {
-    public class Test_BudgetDbContext : DbContext
+    public class Test_BudgetDbContext : BudgetDbContext
     {
-      public DbSet<Bill> Bill { get; set; }
-      public DbSet<Budget> Budget { get; set; }
-      public DbSet<Expense> Expense { get; set; }
-      public DbSet<Goal> Goal { get; set; }
-      public DbSet<Income> Income { get; set; }
-      public DbSet<Member> Member { get; set; }
-
-
 
       protected override void OnConfiguring(DbContextOptionsBuilder dbContext)
       {
@@ -39,7 +31,6 @@ namespace BudgetMe.Storing
         {
           new Budget(){Id = 1, Name = "jimmybudget", MemberId=1, TotalMonthlyNetIncome=0, RemainderAfterBill=0, RemainderAfterGoals=0, Percent=0, RemainderAfterExpenses=0}
         });
-
       }
     }
 }

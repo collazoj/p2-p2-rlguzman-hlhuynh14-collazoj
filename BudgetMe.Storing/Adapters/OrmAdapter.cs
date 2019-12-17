@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using BudgetMe.Storing.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BudgetMe.Storing.Adapters
 {
-    public class OrmAdapter
+    public class OrmAdapter<T> where T:BudgetDbContext
     {
-        private static readonly BudgetDbContext _db = new BudgetDbContext();
-
+        private T _db;
+        public OrmAdapter(T db)
+        {
+            _db = db;
+        }
+        
         //Get all objects from a table Methods.
         public List<Budget> GetBudgets()
         {
