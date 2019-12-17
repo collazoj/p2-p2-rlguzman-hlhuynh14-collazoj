@@ -6,7 +6,7 @@ using BudgetMe.Storing.Interface;
 
 namespace BudgetMe.Storing.Repositories
 {
-    public class MemberRepository : IMemberRepository
+    public class MemberRepository 
     {
 
         private OrmAdapter<BudgetDbContext> _oa;
@@ -40,8 +40,6 @@ namespace BudgetMe.Storing.Repositories
         {
           return _oa.GetMembers();
         }
-
-
         //Grabs an object from the database given a specified id.
         public Budget GetBudget(int id)
         {
@@ -86,102 +84,45 @@ namespace BudgetMe.Storing.Repositories
 
 
         //Create and Add object onto DB
-        public bool CreateBudget(string name, int memberid, double totalmonthlynetincome, double remainderafterbill, double percent, double remainderafterexpenses)
+
+        public bool CreateBill(Bill bill)
         {
-          Budget budget = new Budget();
-          budget.Name = name;
-          budget.MemberId = memberid;
-          budget.TotalMonthlyNetIncome = totalmonthlynetincome;
-          budget.RemainderAfterBill = remainderafterbill;
-          budget.Percent = percent;
-          budget.RemainderAfterExpenses = remainderafterexpenses;
-          return _oa.InsertBudget(budget);
-        }
-        public bool CreateBill(string name, double amount, int budgetid)
-        {
-          Bill bill = new Bill();
-          bill.Name = name;
-          bill.Amount = amount;
-          bill.BudgetId = budgetid;
+          bill.BudgetId = 1;
           return _oa.InsertBill(bill);
         }
-        public bool CreateExpense(string name, double amount, double percent, int budgetid)
+        public bool CreateExpense(Expense expense)
         {
-          Expense expense = new Expense();
-          expense.Name = name;
-          expense.Amount = amount;
-          expense.Percent = percent;
-          expense.BudgetId = budgetid;
+          expense.BudgetId = 1;
           return _oa.InsertExpense(expense);
         }
-        public bool CreateGoal(string name, double goalssavings, double goalsavingspermonth, int monthgoals, int loanterminyears, double interestrate, int budgetid)
+        public bool CreateGoal(Goal goal)
         {
-          Goal goal = new Goal();
-          goal.Name = name;
-          goal.GoalsSavings = goalssavings;
-          goal.GoalSavingsPerMonth = goalsavingspermonth;
-          goal.MonthGoals = monthgoals;
-          goal.LoanTermInYears = loanterminyears;
-          goal.InterestRate = interestrate;
-          goal.BudgetId = budgetid;
+          goal.BudgetId = 1;
           return _oa.InsertGoal(goal);
         }
-        public bool CreateIncome(string name, double amount, int budgetid)
+        public bool CreateIncome(Income income)
         {
-          Income income = new Income();
-          income.Name = name;
-          income.Amount = amount;
-          income.BudgetId = budgetid;
+          income.BudgetId = 1;
           return _oa.InsertIncome(income);
         }
-        public bool CreateMember(string firstname, string lastname)
-        {
-          Member member = new Member();
-          member.FirstName = firstname;
-          member.LastName = lastname;
-          return _oa.InsertMember(member);
-        }
-
 
         //Update a DB object Method
         public bool UpdateBill(Bill bill)
         {
-          Bill bill2 = GetBill(bill.Id);
-          bill2.Amount = bill.Amount;
-          bill2.Name = bill.Name;
-          return _oa.UpdateBill(bill2);
+          return _oa.UpdateBill(bill);
         }
         public bool UpdateExpense(Expense expense)
         {
-          Expense expense2 = GetExpense(expense.Id);
-          expense2.Amount = expense.Amount;
-          expense2.Name = expense.Name;
-          expense2.Percent = expense.Percent;
-          return _oa.UpdateExpense(expense2);
+          return _oa.UpdateExpense(expense);
         }
         public bool UpdateGoal(Goal goal)
         {
-          Goal goal2 = GetGoal(goal.Id);
-          goal2.Name = goal.Name;
-          goal2.GoalsSavings = goal.GoalsSavings;
-          goal2.GoalSavingsPerMonth = goal.GoalSavingsPerMonth;
-          goal2.MonthGoals = goal.MonthGoals;
-          goal2.LoanTermInYears = goal.LoanTermInYears;
-          goal2.InterestRate = goal.InterestRate;
-          goal2.EstimatedLowLoan = goal.EstimatedLowLoan;
-          goal2.EstimatedHighLoan = goal.EstimatedHighLoan;
-          goal2.EstimatedHighTotal = goal.EstimatedHighTotal;
-          goal2.EstimatedLowTotal = goal.EstimatedLowTotal;
-          return _oa.UpdateGoal(goal2);
+          return _oa.UpdateGoal(goal);
         }
         public bool UpdateIncome(Income income)
         {
-          Income income2 = GetIncome(income.Id);
-          income2.Amount = income.Amount;
-          income2.Name = income.Name;
-          return _oa.UpdateIncome(income2);
+          return _oa.UpdateIncome(income);
         }
-
 
 
         //Delete a DB object Methods

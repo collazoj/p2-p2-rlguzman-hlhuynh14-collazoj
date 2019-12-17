@@ -25,7 +25,7 @@ namespace BudgetMe.Storing.Interface
         bool CreateBudget(string name, int memberid, double totalmonthlynetincome, double remainderafterbill, double percent, double remainderafterexpenses);
         bool CreateBill(string name, double amount, int budgetid);
         bool CreateExpense(string name, double amount, double percent, int budgetid);
-        bool CreateGoal(string name, double goalssavings, double goalsavingspermonth, int monthgoals, int loanterminyears, double interestrate, int budgetid);
+        bool CreateGoal(string name, double goalssavings, double goalsavingspermonth, int monthgoals, int loanterminyears, int interestrate, int budgetid, double EstimatedLowLoan, double EstimatedHighLoan, double EstimatedLowTotal, double EstimatedHighTotal);
         bool CreateIncome(string name, double amount, int budgetid);
         bool CreateMember(string firstname, string lastname);
 
