@@ -11,14 +11,14 @@ services:
     ports:
       - 5432:5432
   app:
-    build: ./BudgetMe.Domain/.
+    build: .
     hostname: app
     depends_on:
       - postgres
     links:
       - postgres
     ports:
-      - 5010:80
+      - 4000:80
     environment:
       WAIT_HOSTS: postgres:5432
   client:
@@ -29,6 +29,7 @@ services:
     depends_on:
       - postgres
     links:
+      - app
       - postgres
     environment:
       WAIT_HOSTS: postgres:5432
