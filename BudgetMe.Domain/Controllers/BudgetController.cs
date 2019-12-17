@@ -158,6 +158,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound(id));
     }
+     [HttpGet("{id}")]
     public async Task<IActionResult> Calculate(int id)
     {
       Budget budget = _db.Budget.FirstOrDefault(p => p.Id == id);
