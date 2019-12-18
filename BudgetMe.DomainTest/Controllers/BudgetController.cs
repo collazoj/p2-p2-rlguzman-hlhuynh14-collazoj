@@ -28,7 +28,7 @@ namespace BudgetMe.Domain.Controllers
       tBudget.Member = test;
       tBudget.MemberId = 1;
       test.Budget = tBudget;
-      return await Task.FromResult(Ok(test));
+      return await Task.FromResult(Ok(JsonConvert.SerializeObject(test)));
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
