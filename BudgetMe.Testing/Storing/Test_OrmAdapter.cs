@@ -55,6 +55,7 @@ namespace BudgetMe.Testing.Storing
       public void TestOrmAdapter_Insert1()
       {
         //Arrange
+        _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
 
         //Act
@@ -71,6 +72,7 @@ namespace BudgetMe.Testing.Storing
       public void TestOrmAdapter_Insert2()
       {
         //Arrange
+        _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
 
         //Act
