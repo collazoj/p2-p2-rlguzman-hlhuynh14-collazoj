@@ -1,7 +1,7 @@
 # docker-compose.yml
 version: "3.3"
 services:
-  postgres:
+  db:
     image: postgres
     hostname: postgres
     environment:
@@ -10,26 +10,37 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - 5432:5432
+    networks:
+      - BudgetMeNet
   app:
     build: .
     hostname: app
     depends_on:
-      - postgres
+      - db
     links:
-      - postgres
+      - db
     ports:
       - 4000:80
+    networks:
+      - BudgetMeNet
     environment:
-      WAIT_HOSTS: postgres:5432
+      WAIT_HOSTS: db:5432
+      ASPNETCORE_ENVIRONMENT: Development
   client:
     build: ./BudgetMe.Client/.
     hostname: client
     ports:
       - 5000:80
+    networks:
+      - BudgetMeNet
     depends_on:
-      - postgres
+      - db
     links:
       - app
-      - postgres
+      - db
     environment:
-      WAIT_HOSTS: postgres:5432
+      WAIT_HOSTS: db:5432
+      ASPNETCORE_ENVIRONMENT: Development
+networks:
+  BudgetMeNet:
+    driver: bridge
