@@ -26,7 +26,7 @@ namespace BudgetMe.Client.Controllers
         {
             Member loggedInMember =  await GetMember(1);
             {
-                loggedInMember.Budget = await GetBudget(1);
+                // loggedInMember.Budget = await GetBudget(1);
                 return View(loggedInMember);
             }
         } 
