@@ -107,29 +107,47 @@ namespace BudgetMe.Storing.Repositories
         }
 
         //Update a DB object Method
-        public bool UpdateBill(Bill bill)
+public bool UpdateBill(Bill bill)
         {
-          return _oa.UpdateBill(bill);
+          Bill bill2 = GetBill(bill.Id);
+          bill2.Amount = bill.Amount;
+          bill2.Name = bill.Name;
+          return _oa.UpdateBill(bill2);
         }
         public bool UpdateExpense(Expense expense)
         {
-          return _oa.UpdateExpense(expense);
+          Expense expense2 = GetExpense(expense.Id);
+          expense2.Amount = expense.Amount;
+          expense2.Name = expense.Name;
+          expense2.Percent = expense.Percent;
+          return _oa.UpdateExpense(expense2);
         }
         public bool UpdateGoal(Goal goal)
         {
-          return _oa.UpdateGoal(goal);
+          Goal goal2 = GetGoal(goal.Id);
+          goal2.Name = goal.Name;
+          goal2.GoalsSavings = goal.GoalsSavings;
+          goal2.GoalSavingsPerMonth = goal.GoalSavingsPerMonth;
+          goal2.MonthGoals = goal.MonthGoals;
+          goal2.LoanTermInYears = goal.LoanTermInYears;
+          goal2.InterestRate = goal.InterestRate;
+          goal2.EstimatedLowLoan = goal.EstimatedLowLoan;
+          goal2.EstimatedHighLoan = goal.EstimatedHighLoan;
+          goal2.EstimatedHighTotal = goal.EstimatedHighTotal;
+          goal2.EstimatedLowTotal = goal.EstimatedLowTotal;
+          return _oa.UpdateGoal(goal2);
         }
         public bool UpdateIncome(Income income)
         {
-          return _oa.UpdateIncome(income);
+          Income income2 = GetIncome(income.Id);
+          income2.Amount = income.Amount;
+          income2.Name = income.Name;
+          return _oa.UpdateIncome(income2);
         }
+
 
 
         //Delete a DB object Methods
-        public bool DeleteBudget(int id)
-        {
-          return _oa.RemoveBudget(id);
-        }
         public bool DeleteBill(int id)
         {
           return _oa.RemoveBill(id);
@@ -146,16 +164,5 @@ namespace BudgetMe.Storing.Repositories
         {
           return _oa.RemoveIncome(id);
         }
-        public bool DeleteMember(int id)
-        {
-          return _oa.RemoveMember(id);
-        }
-
-
-        public bool SaveUpdates()
-        {
-          return _oa.SaveDBChanges();
-        }
-
     }
 }

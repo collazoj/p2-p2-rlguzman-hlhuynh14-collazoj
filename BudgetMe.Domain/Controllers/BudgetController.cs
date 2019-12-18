@@ -39,7 +39,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-    public async Task<IActionResult> UpdateIncome(Income income)
+    public async Task<IActionResult> UpdateIncome( int id,Income income)
     {
       if (ModelState.IsValid)
       {

@@ -80,11 +80,6 @@ namespace BudgetMe.Storing.Adapters
 
 
         //Update DB object Methods
-        public bool UpdateBudget(Budget budget)
-        {
-          _db.Budget.Update(budget);
-          return _db.SaveChanges()==1;
-        }
         public bool UpdateBill(Bill bill)
         {
           _db.Bill.Update(bill);
@@ -115,12 +110,6 @@ namespace BudgetMe.Storing.Adapters
 
 
         //Delete DB object Methods
-        public bool RemoveBudget(int id)
-        {
-          Budget budget = _db.Budget.First(b => b.Id==id);
-          _db.Budget.Remove(budget);
-          return _db.SaveChanges()==1;
-        }
         public bool RemoveBill(int id)
         {
           Bill bill = _db.Bill.First(b => b.Id==id);
