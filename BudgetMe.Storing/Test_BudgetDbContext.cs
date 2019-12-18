@@ -71,8 +71,8 @@ namespace BudgetMe.Storing
       public List<Goal> MakeSeedGoals()
       {
         return new List<Goal>(){
-          new Goal(){Id = 1, Name = "Saving For House", GoalSavingsPerMonth = 500},
-          new Goal(){Id = 2, Name = "Saving For Car", GoalSavingsPerMonth = 200},
+          new Goal(){Id = 1, Name = "Saving For House", GoalSavingsPerMonth = 500, InterestRate = 5, MonthGoals = 60, LoanTermInYears = 15, GoalsSavings = 10000},
+          new Goal(){Id = 2, Name = "Saving For Car", GoalSavingsPerMonth = 200, InterestRate = 5, MonthGoals = 60, LoanTermInYears = 15, GoalsSavings = 3000},
         };
       }
       public List<Expense> MakeSeedExpenses()

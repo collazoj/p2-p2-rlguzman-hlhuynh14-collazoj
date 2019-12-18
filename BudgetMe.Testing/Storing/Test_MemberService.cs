@@ -29,7 +29,7 @@ namespace BudgetMe.Testing.Domain
          _tdb.Database.EnsureDeleted();
 
         //Assert
-        Assert.True(expected == actual); //
+        Assert.True(expected == actual); 
       }
       [Fact]
       public void Test_GetBillTest()
@@ -51,7 +51,7 @@ namespace BudgetMe.Testing.Domain
          _tdb.Database.EnsureDeleted();
 
         //Assert
-        Assert.True(expected == actual); //
+        Assert.True(expected == actual); 
       }
       [Fact]
       public void Test_GetGoalTest()
@@ -73,7 +73,7 @@ namespace BudgetMe.Testing.Domain
          _tdb.Database.EnsureDeleted();
 
         //Assert
-        Assert.True(expected == actual); //
+        Assert.True(expected == actual); 
       }
       [Fact]
       public void Test_GetExpenseTest()
@@ -95,7 +95,51 @@ namespace BudgetMe.Testing.Domain
          _tdb.Database.EnsureDeleted();
 
         //Assert
-        Assert.True(expected == actual); //
+        Assert.True(expected == actual); 
+      }
+      [Fact]
+      public void Test_CalculatLoanTest()
+      {
+        //Arrange
+        Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
+        _tdb.Database.EnsureCreated();
+        OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
+        MemberService memberService = new MemberService();
+        Budget budget = _tdb.Budget.Where(m => m.Id == 1).Single();
+        Goal goal = _tdb.Goal.Where(m => m.Id == 1).Single();
+
+        //Act
+        memberService.CalculateLoan(goal);
+        Goal goal2 = _tdb.Goal.Where(m => m.Id == 1).Single();
+        double actual = 85500;
+        double expected = goal2.EstimatedHighLoan;
+         _tdb.Database.EnsureDeleted();
+
+        //Assert
+        Assert.True(expected == actual); 
+      }
+      [Fact]
+      public void Test_GoalSavingsTest()
+      {
+        //Arrange
+        Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
+        _tdb.Database.EnsureCreated();
+        OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
+        MemberService memberService = new MemberService();
+        Budget budget = _tdb.Budget.Where(m => m.Id == 1).Single();
+        Goal goal = _tdb.Goal.Where(m => m.Id == 1).Single();
+
+        //Act
+        memberService.CalculateLoan(goal);
+        Goal goal2 = _tdb.Goal.Where(m => m.Id == 1).Single();
+        memberService.EstimatedGoalSavings(goal2);
+        Goal goal3 = _tdb.Goal.Where(m => m.Id == 1).Single();
+        double actual = 125500;
+        double expected = goal2.EstimatedHighTotal;
+         _tdb.Database.EnsureDeleted();
+
+        //Assert
+        Assert.True(expected == actual); 
       }
     }
 }
