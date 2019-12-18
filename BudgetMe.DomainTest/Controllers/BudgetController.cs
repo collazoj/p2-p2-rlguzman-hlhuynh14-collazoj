@@ -20,7 +20,15 @@ namespace BudgetMe.Domain.Controllers
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMember(int id)
     {
-      return await Task.FromResult(Ok(_db.Member.FirstOrDefault(p => p.Id == id)));
+      Member test = new Member();
+      test.FirstName = "John";
+      test.LastName = "Hancock";
+      Budget tBudget = new Budget();
+      tBudget.Id = 1;
+      tBudget.Member = test;
+      tBudget.MemberId = 1;
+      test.Budget = tBudget;
+      return await Task.FromResult(Ok(test));
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
