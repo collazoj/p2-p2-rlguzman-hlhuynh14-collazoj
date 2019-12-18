@@ -32,6 +32,14 @@ namespace BudgetMe.Storing
         builder.Entity<Bill>(o => o.HasKey(k => k.Id));
         builder.Entity<Bill>().Property(p => p.Id).UseSerialColumn();
         builder.Entity<Bill>().HasData(MakeSeedBills());
+
+        builder.Entity<Goal>(o => o.HasKey(k => k.Id));
+        builder.Entity<Goal>().Property(p => p.Id).UseSerialColumn();
+        builder.Entity<Goal>().HasData(MakeSeedGoals());
+
+        builder.Entity<Expense>(o => o.HasKey(k => k.Id));
+        builder.Entity<Expense>().Property(p => p.Id).UseSerialColumn();
+        builder.Entity<Expense>().HasData(MakeSeedExpenses());
       }
 
 
@@ -58,6 +66,20 @@ namespace BudgetMe.Storing
           new Bill(){Id = 1, Name = "Rent", Amount = 500},
           new Bill(){Id = 2, Name = "Utilities", Amount= 200},
           new Bill(){Id = 3, Name = "Phone", Amount= 70},
+        };
+      }
+      public List<Goal> MakeSeedGoals()
+      {
+        return new List<Goal>(){
+          new Goal(){Id = 1, Name = "Saving For House", GoalSavingsPerMonth = 500},
+          new Goal(){Id = 2, Name = "Saving For Car", GoalSavingsPerMonth = 200},
+        };
+      }
+      public List<Expense> MakeSeedExpenses()
+      {
+        return new List<Expense>(){
+          new Expense(){Id = 1, Name = "Groceries", Percent = 20},
+          new Expense(){Id = 2, Name = "Movies", Percent = 5},
         };
       }
     }
