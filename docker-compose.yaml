@@ -25,6 +25,7 @@ services:
       - BudgetMeNet
     environment:
       WAIT_HOSTS: db:5432
+      ASPNETCORE_ENVIRONMENT: Development
   client:
     build: ./BudgetMe.Client/.
     hostname: client
@@ -39,6 +40,7 @@ services:
       - db
     environment:
       WAIT_HOSTS: db:5432
+      ASPNETCORE_ENVIRONMENT: Development
 networks:
   BudgetMeNet:
     driver: bridge
