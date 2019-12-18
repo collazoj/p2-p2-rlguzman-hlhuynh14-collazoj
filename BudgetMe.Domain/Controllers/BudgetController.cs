@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using BudgetMe.Storing.Repositories;
 using BudgetMe.Storing.Models;
 using BudgetMe.Storing;
@@ -158,6 +156,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound(id));
     }
+     [HttpGet("{id}")]
     public async Task<IActionResult> Calculate(int id)
     {
       Budget budget = _db.Budget.FirstOrDefault(p => p.Id == id);
