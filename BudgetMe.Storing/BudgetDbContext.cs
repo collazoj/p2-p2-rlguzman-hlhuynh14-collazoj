@@ -17,7 +17,7 @@ namespace BudgetMe.Storing
 
       protected override void OnConfiguring(DbContextOptionsBuilder dbContext)
       {
-        dbContext.UseNpgsql("server=localhost;database=budgetdb;user id=postgres;password=postgres");
+        dbContext.UseNpgsql("server=db;database=budgetdb;user id=postgres;password=postgres");
       }
 
       protected override void OnModelCreating(ModelBuilder builder)

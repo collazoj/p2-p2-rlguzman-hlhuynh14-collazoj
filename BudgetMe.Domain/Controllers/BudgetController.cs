@@ -14,18 +14,17 @@ namespace BudgetMe.Domain.Controllers
   public class BudgetController : ControllerBase
   {
     private readonly MemberService memberService = new MemberService();
-    private readonly MemberRepository _mr = new MemberRepository();
-    private readonly BudgetDbContext _db = new BudgetDbContext();
+    private readonly MemberRepository<BudgetDbContext> _mr = new MemberRepository<BudgetDbContext>(new BudgetDbContext());
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMember(int id)
     {
-      return await Task.FromResult(Ok(_db.Member.FirstOrDefault(p => p.Id == id)));
+      return await Task.FromResult(Ok(_mr.GetMember(id)));
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
     {
-      return await Task.FromResult(Ok(_db.Budget.FirstOrDefault(p => p.Id == id)));
+      return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
     //Income
     [HttpPost]
@@ -159,16 +158,17 @@ namespace BudgetMe.Domain.Controllers
      [HttpGet("{id}")]
     public async Task<IActionResult> Calculate(int id)
     {
-      Budget budget = _db.Budget.FirstOrDefault(p => p.Id == id);
-      budget.IncomeList = _db.Income.ToList();
-      budget.BillList = _db.Bill.ToList();
-      budget.GoalList = _db.Goal.ToList();
-      budget.ExpenseList = _db.Expense.ToList();
+      Budget budget = _mr.GetBudget(id);
+      budget.IncomeList = _mr.GetIncomes();
+      budget.BillList = _mr.GetBills();
+      budget.GoalList = _mr.GetGoals();
+      budget.ExpenseList = _mr.GetExpenses();
       memberService.GetNetIncome(budget, budget.IncomeList);
       memberService.DeductBills(budget, budget.BillList);
       memberService.DeductGoals(budget, budget.GoalList);
       memberService.DivideRemainder(budget, budget.ExpenseList);
-      return await Task.FromResult(Ok(_db.Budget.FirstOrDefault(p => p.Id == id)));
+      _mr.UpdateBudget(budget);
+      return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
   }
 }

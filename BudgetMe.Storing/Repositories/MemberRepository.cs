@@ -6,14 +6,14 @@ using BudgetMe.Storing.Interface;
 
 namespace BudgetMe.Storing.Repositories
 {
-    public class MemberRepository 
+    public class MemberRepository<T> where T:BudgetDbContext
     {
-
-        private OrmAdapter<BudgetDbContext> _oa;
-        public MemberRepository()
+        private T _db;
+        private OrmAdapter<T> _oa;
+        public MemberRepository(T db)
         {
-          BudgetDbContext _db = new BudgetDbContext();
-          _oa = new OrmAdapter<BudgetDbContext>(_db);
+          _db = db;
+          _oa = new OrmAdapter<T>(_db);
         }
 
         public List<Budget> GetBudgets()
@@ -106,8 +106,13 @@ namespace BudgetMe.Storing.Repositories
           return _oa.InsertIncome(income);
         }
 
-        //Update a DB object Method
-public bool UpdateBill(Bill bill)
+        //Update DB object Methods
+         public bool UpdateBudget(Budget budget)
+         {
+           _db.Budget.Update(budget);
+           return _db.SaveChanges()==1;
+         }
+        public bool UpdateBill(Bill bill)
         {
           Bill bill2 = GetBill(bill.Id);
           bill2.Amount = bill.Amount;
