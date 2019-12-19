@@ -18,26 +18,50 @@ namespace BudgetMe.Storing.Repositories
 
         public List<Budget> GetBudgets()
         {
+          if (_oa.GetBudgets()==null)
+          {
+            return new List<Budget>();
+          }
           return _oa.GetBudgets();
         }
         public List<Bill> GetBills()
         {
+          if (_oa.GetBills()==null)
+          {
+            return new List<Bill>();
+          }
           return _oa.GetBills();
         }
         public List<Expense> GetExpenses()
         {
+          if (_oa.GetExpenses()==null)
+          {
+            return new List<Expense>();
+          }
           return _oa.GetExpenses();
         }
         public List<Goal> GetGoals()
         {
+          if (_oa.GetGoals()==null)
+          {
+            return new List<Goal>();
+          }
           return _oa.GetGoals();
         }
         public List<Income> GetIncomes()
         {
+          if (_oa.GetIncomes()==null)
+          {
+            return new List<Income>();
+          }
           return _oa.GetIncomes();
         }
         public List<Member> GetMembers()
         {
+          if (_oa.GetMembers()==null)
+          {
+            return new List<Member>();
+          }
           return _oa.GetMembers();
         }
         //Grabs an object from the database given a specified id.
