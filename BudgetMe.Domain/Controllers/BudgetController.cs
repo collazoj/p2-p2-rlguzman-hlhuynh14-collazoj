@@ -30,7 +30,7 @@ namespace BudgetMe.Domain.Controllers
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
     {
-      return await Task.FromResult(Ok(_db.Budget.FirstOrDefault(p => p.Id == id)));
+      return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
     //Income
     [HttpPost]
