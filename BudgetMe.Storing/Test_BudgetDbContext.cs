@@ -22,7 +22,8 @@ namespace BudgetMe.Storing
         builder.Entity<Budget>().Property(p => p.Id).UseSerialColumn();
         builder.Entity<Budget>().HasData(new List<Budget>()
         {
-          new Budget(){Id = 1, Name = "jimmybudget", MemberId=1, TotalMonthlyNetIncome=0, RemainderAfterBill=0, RemainderAfterGoals=0, Percent=0, RemainderAfterExpenses=0}
+          new Budget(){Id = 1, Name = "jimmybudget", MemberId=1, TotalMonthlyNetIncome=0, RemainderAfterBill=0, RemainderAfterGoals=0, Percent=0, RemainderAfterExpenses=0},
+          new Budget(){Id = 2, Name = "jimmybudget", MemberId=1, TotalMonthlyNetIncome=0, RemainderAfterBill=0, RemainderAfterGoals=0, Percent=0, RemainderAfterExpenses=0}
         });
 
         builder.Entity<Income>(o => o.HasKey(k => k.Id));
