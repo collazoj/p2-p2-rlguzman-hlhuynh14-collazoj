@@ -13,8 +13,7 @@ namespace BudgetMe.Storing.Models
         public double EstimatedLowTotal { get; set; }
         public int LoanTermInYears { get; set; }
         public double InterestRate { get; set; }
-        //Budget
-        // [ForeignKey("Budget")]
+
         public int? BudgetId { get; set; }
 
     }

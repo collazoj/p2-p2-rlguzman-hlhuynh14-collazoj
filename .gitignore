@@ -78,7 +78,3 @@ _[Ss]cripts
 # VSCODE #
 #####################
 **/.vscode/
-
-**/**/migrations
-**/migrations/
-**/migrations/*
