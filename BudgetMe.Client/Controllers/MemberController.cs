@@ -26,7 +26,7 @@ namespace BudgetMe.Client.Controllers
         {
             Member loggedInMember =  await GetMember(1);
             {
-                // loggedInMember.Budget = await GetBudget(1);
+                loggedInMember.Budget = await GetBudget(1);
                 return await Task.FromResult(View(loggedInMember));
             }
         } 
@@ -44,7 +44,7 @@ namespace BudgetMe.Client.Controllers
         }
         public async Task<Budget> GetBudget(int id)
         {
-        string path = $"app/api/Budget/GetBudget/{id}";
+        string path = $"http://app/api/Budget/GetBudget/{id}";
         Budget budget = null;
         HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)

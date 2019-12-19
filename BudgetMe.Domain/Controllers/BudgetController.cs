@@ -15,7 +15,13 @@ namespace BudgetMe.Domain.Controllers
   {
     private readonly MemberService memberService = new MemberService();
     private readonly MemberRepository _mr = new MemberRepository();
-    private readonly BudgetDbContext _db = new BudgetDbContext();
+    private readonly BudgetDbContext _db;
+
+    public BudgetController(BudgetDbContext db)
+    {
+      _db = db;
+        
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMember(int id)

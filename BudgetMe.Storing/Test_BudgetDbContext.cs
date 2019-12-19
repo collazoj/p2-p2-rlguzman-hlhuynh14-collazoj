@@ -6,6 +6,9 @@ namespace BudgetMe.Storing
 {
     public class Test_BudgetDbContext : BudgetDbContext
     {
+      public Test_BudgetDbContext()
+      {
+      }
 
       protected override void OnConfiguring(DbContextOptionsBuilder dbContext)
       {
