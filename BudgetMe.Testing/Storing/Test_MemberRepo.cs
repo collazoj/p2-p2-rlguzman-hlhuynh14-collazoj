@@ -13,9 +13,9 @@ namespace BudgetMe.Testing.Storing
         public void TestMemberRepo_Get1()
         {
           //Arrange
-          Test_BudgetDbContext tdb = new Test_BudgetDbContext();
+          Test_BudgetDbContext3 tdb = new Test_BudgetDbContext3();
           tdb.Database.EnsureCreated();
-          MemberRepository<Test_BudgetDbContext> _mr = new MemberRepository<Test_BudgetDbContext>(tdb);
+          MemberRepository<Test_BudgetDbContext3> _mr = new MemberRepository<Test_BudgetDbContext3>(tdb);
           
           //Act
           List<Bill> blist = _mr.GetBills();
@@ -28,9 +28,9 @@ namespace BudgetMe.Testing.Storing
         [Fact]
         public void TestMemberRepo_Get2()
         {
-          Test_BudgetDbContext tdb = new Test_BudgetDbContext();
+          Test_BudgetDbContext3 tdb = new Test_BudgetDbContext3();
           tdb.Database.EnsureCreated();
-          MemberRepository<Test_BudgetDbContext> _mr = new MemberRepository<Test_BudgetDbContext>(tdb);
+          MemberRepository<Test_BudgetDbContext3> _mr = new MemberRepository<Test_BudgetDbContext3>(tdb);
           
           List<Income> ilist = _mr.GetIncomes();
           
@@ -41,9 +41,9 @@ namespace BudgetMe.Testing.Storing
         [Fact]
         public void TestMemberRepo_GetBill()
         {
-          Test_BudgetDbContext tdb = new Test_BudgetDbContext();
+          Test_BudgetDbContext3 tdb = new Test_BudgetDbContext3();
           tdb.Database.EnsureCreated();
-          MemberRepository<Test_BudgetDbContext> _mr = new MemberRepository<Test_BudgetDbContext>(tdb);
+          MemberRepository<Test_BudgetDbContext3> _mr = new MemberRepository<Test_BudgetDbContext3>(tdb);
 
           Bill bill = _mr.GetBill(2);
           string a = bill.Name;
