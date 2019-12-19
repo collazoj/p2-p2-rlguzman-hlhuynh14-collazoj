@@ -20,7 +20,7 @@ namespace BudgetMe.Client.Controllers
     {
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(
-        new MediaTypeWithQualityHeaderValue("http://application/json"));
+        new MediaTypeWithQualityHeaderValue("application/json"));
     }
         public async Task<IActionResult> Index()
         {
@@ -71,7 +71,7 @@ namespace BudgetMe.Client.Controllers
         string path = $"http://app/api/Budget/CreateIncome/{income}";
         
         var myContent = JsonConvert.SerializeObject(income);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -110,7 +110,7 @@ namespace BudgetMe.Client.Controllers
         string path = $"http://app/api/Budget/CreateBill/{bill}";
         
         var myContent = JsonConvert.SerializeObject(bill);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -149,7 +149,7 @@ namespace BudgetMe.Client.Controllers
         string path = $"http://app/api/Budget/CreateGoal/{goal}";
         
         var myContent = JsonConvert.SerializeObject(goal);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -188,7 +188,7 @@ namespace BudgetMe.Client.Controllers
         string path = $"http://app/api/Budget/CreateExpense/{expense}";
         
         var myContent = JsonConvert.SerializeObject(expense);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
