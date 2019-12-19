@@ -27,13 +27,13 @@ namespace BudgetMe.Client.Controllers
             Member loggedInMember =  await GetMember(1);
             {
                 // loggedInMember.Budget = await GetBudget(1);
-                return View(loggedInMember);
+                return await Task.FromResult(View(loggedInMember));
             }
         } 
         [HttpGet]
         public async Task<Member> GetMember(int id)
         {
-        string path = $"app/api/Budget/GetMember/{id}";
+        string path = $"http://app/api/Budget/GetMember/{id}";
         Member member = null;
         HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)
