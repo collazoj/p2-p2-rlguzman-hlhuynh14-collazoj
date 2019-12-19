@@ -25,8 +25,8 @@ namespace BudgetMe.Testing.Domain
         //Assert
         Assert.True(member != null); //
       }
-    [Fact]
-    public void Test_GetBudgetTest()
+      [Fact]
+      public void Test_GetBudgetTest()
       {
         //Arrange
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
@@ -42,7 +42,7 @@ namespace BudgetMe.Testing.Domain
         Assert.True(budget != null); //
       }
       [Fact]
-    public void Test_CreateIncomeTest()
+      public void Test_CreateIncomeTest()
       {
         //Arrange
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
@@ -58,7 +58,8 @@ namespace BudgetMe.Testing.Domain
         //Assert
         Assert.True(income2 != null); //
       }
-    public void Test_CreateBillTest()
+      [Fact]
+      public void Test_CreateBillTest()
       {
         //Arrange
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
@@ -74,7 +75,8 @@ namespace BudgetMe.Testing.Domain
         //Assert
         Assert.True(bill2 != null); //
       }
-    public void Test_CreateGoalTest()
+      [Fact]
+      public void Test_CreateGoalTest()
       {
         //Arrange
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
@@ -90,7 +92,8 @@ namespace BudgetMe.Testing.Domain
         //Assert
         Assert.True(goal2 != null); //
       }
-    public void Test_CreateExpenseTest()
+      [Fact]
+      public void Test_CreateExpenseTest()
       {
         //Arrange
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();

@@ -4,15 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetMe.Storing
 {
-    public class Test_BudgetDbContext : BudgetDbContext
+    public class Test_BudgetDbContext3 : BudgetDbContext
     {
-      public Test_BudgetDbContext()
-      {
-      }
 
       protected override void OnConfiguring(DbContextOptionsBuilder dbContext)
       {
-        dbContext.UseInMemoryDatabase("testbudgetdb");
+        dbContext.UseInMemoryDatabase("testbudgetdb3");
       }
 
       protected override void OnModelCreating(ModelBuilder builder)

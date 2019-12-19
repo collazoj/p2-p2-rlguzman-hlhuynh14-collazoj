@@ -15,7 +15,7 @@ namespace BudgetMe.Domain.Controllers
   public class BudgetController : ControllerBase
   {
     private readonly MemberService memberService = new MemberService();
-    private readonly MemberRepository _mr = new MemberRepository();
+    private readonly MemberRepository<BudgetDbContext> _mr = new MemberRepository<BudgetDbContext>(new BudgetDbContext());
     private readonly BudgetDbContext _db;
 
     public BudgetController(BudgetDbContext db)

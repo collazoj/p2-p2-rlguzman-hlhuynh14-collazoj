@@ -1,6 +1,4 @@
-﻿using BudgetMe.Storing.Models;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace BudgetMe.Storing.Models
 {
@@ -40,10 +38,10 @@ namespace BudgetMe.Storing.Models
             budget.Percent = 1;
             foreach (var item in expenseList)
             {
-                item.Amount = (item.Percent * .01) * budget.RemainderAfterBill;
+                item.Amount = (item.Percent * .01) * budget.RemainderAfterGoals;
                budget.Percent =  budget.Percent - (item.Percent * .01);
             }
-            budget.RemainderAfterExpenses = budget.Percent * budget.RemainderAfterBill;
+            budget.RemainderAfterExpenses = budget.Percent * budget.RemainderAfterGoals;
         }
         //Goals
         public void EstimatedGoalSavings(Goal goal)
