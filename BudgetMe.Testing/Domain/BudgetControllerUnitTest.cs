@@ -16,7 +16,7 @@ namespace BudgetMe.Testing.Domain
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
         _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
-        BudgetController budgetController = new BudgetController();
+        BudgetController budgetController = new BudgetController(_tdb);
 
         //Act
         var member = budgetController.GetMember(1);
@@ -32,7 +32,7 @@ namespace BudgetMe.Testing.Domain
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
         _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
-        BudgetController budgetController = new BudgetController();
+        BudgetController budgetController = new BudgetController(_tdb);
 
         //Act
         var budget = budgetController.GetBudget(1);
@@ -48,7 +48,7 @@ namespace BudgetMe.Testing.Domain
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
         _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
-        BudgetController budgetController = new BudgetController();
+        BudgetController budgetController = new BudgetController(_tdb);
         Income income = new Income();
 
         //Act
@@ -65,7 +65,7 @@ namespace BudgetMe.Testing.Domain
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
         _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
-        BudgetController budgetController = new BudgetController();
+        BudgetController budgetController = new BudgetController(_tdb);
         Bill bill = new Bill();
 
         //Act
@@ -82,7 +82,7 @@ namespace BudgetMe.Testing.Domain
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
         _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
-        BudgetController budgetController = new BudgetController();
+        BudgetController budgetController = new BudgetController(_tdb);
         Goal goal = new Goal();
 
         //Act
@@ -99,7 +99,7 @@ namespace BudgetMe.Testing.Domain
         Test_BudgetDbContext _tdb = new Test_BudgetDbContext();
         _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext> _oa = new OrmAdapter<Test_BudgetDbContext>(_tdb);
-        BudgetController budgetController = new BudgetController();
+        BudgetController budgetController = new BudgetController(_tdb);
         Expense expense = new Expense();
 
         //Act

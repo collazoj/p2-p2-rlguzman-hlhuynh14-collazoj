@@ -20,7 +20,7 @@ namespace BudgetMe.Client.Controllers
     {
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(
-        new MediaTypeWithQualityHeaderValue("application/json"));
+        new MediaTypeWithQualityHeaderValue("http://application/json"));
     }
         public async Task<IActionResult> Index()
         {
@@ -33,7 +33,7 @@ namespace BudgetMe.Client.Controllers
         [HttpGet]
         public async Task<Member> GetMember(int id)
         {
-        string path = $"app/api/Budget/GetMember/{id}";
+        string path = $"http://app/api/Budget/GetMember/{id}";
         Member member = null;
         HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)
@@ -44,7 +44,7 @@ namespace BudgetMe.Client.Controllers
         }
         public async Task<Budget> GetBudget(int id)
         {
-        string path = $"app/api/Budget/GetBudget/{id}";
+        string path = $"http://app/api/Budget/GetBudget/{id}";
         Budget budget = null;
         HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)
@@ -68,10 +68,10 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateIncome(int id, Income income)
         {
-        string path = $"app/api/Budget/CreateIncome/{income}";
+        string path = $"http://app/api/Budget/CreateIncome/{income}";
         
         var myContent = JsonConvert.SerializeObject(income);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -88,7 +88,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteIncome(int id, Income income)
         {
-        string path = $"app/api/Budget/DeleteIncome/{income}";
+        string path = $"http://app/api/Budget/DeleteIncome/{income}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -107,10 +107,10 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateBill(int id, Bill bill)
         {
-        string path = $"app/api/Budget/CreateBill/{bill}";
+        string path = $"http://app/api/Budget/CreateBill/{bill}";
         
         var myContent = JsonConvert.SerializeObject(bill);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -127,7 +127,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteBill(int id, Bill bill)
         {
-        string path = $"app/api/Budget/DeleteBill/{bill}";
+        string path = $"http://app/api/Budget/DeleteBill/{bill}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -146,10 +146,10 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateGoal(int id, Goal goal)
         {
-        string path = $"app/api/Budget/CreateGoal/{goal}";
+        string path = $"http://app/api/Budget/CreateGoal/{goal}";
         
         var myContent = JsonConvert.SerializeObject(goal);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -166,7 +166,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteGoal(int id, Goal goal)
         {
-        string path = $"app/api/Budget/DeleteGoal/{goal}";
+        string path = $"http://app/api/Budget/DeleteGoal/{goal}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -185,10 +185,10 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateExpense(int id, Expense expense)
         {
-        string path = $"app/api/Budget/CreateExpense/{expense}";
+        string path = $"http://app/api/Budget/CreateExpense/{expense}";
         
         var myContent = JsonConvert.SerializeObject(expense);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
+        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "http://application/json");
         HttpResponseMessage response = await client.PostAsync(path, stringContent);
         if (response.IsSuccessStatusCode)
         {
@@ -205,7 +205,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteExpense(int id, Expense expense)
         {
-        string path = $"app/api/Budget/DeleteExpense/{expense}";
+        string path = $"http://app/api/Budget/DeleteExpense/{expense}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -216,7 +216,7 @@ namespace BudgetMe.Client.Controllers
 
         public async Task<Budget> Calculate(int id)
         {
-        string path = $"app/api/Budget/Calculate/{id}";
+        string path = $"http://app/api/Budget/Calculate/{id}";
         Budget budget = null;
         HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)

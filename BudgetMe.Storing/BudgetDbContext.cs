@@ -13,7 +13,14 @@ namespace BudgetMe.Storing
       public DbSet<Income> Income { get; set; }
       public DbSet<Member> Member { get; set; }
 
-
+      public BudgetDbContext(DbContextOptions<BudgetDbContext> options)
+      : base(options)
+      {
+        
+      }
+      public BudgetDbContext()
+      {
+      }
 
       protected override void OnConfiguring(DbContextOptionsBuilder dbContext)
       {
@@ -22,6 +29,9 @@ namespace BudgetMe.Storing
 
       protected override void OnModelCreating(ModelBuilder builder)
       {
+
+        base.OnModelCreating(builder);
+        
         builder.Entity<Member>(o => o.HasKey(k => k.Id));
         
         builder.Entity<Member>().Property(p => p.Id).UseSerialColumn();
