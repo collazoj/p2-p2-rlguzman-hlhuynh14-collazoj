@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +28,15 @@ namespace BudgetMe.Domain
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<BudgetDbContext>();
+
+            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            if(connectionString == null)
+            {
+              Environment.SetEnvironmentVariable("DB_CONNECTION_STRING", "server=db;port=5432;database=postgres;username=postgres;password=postgres");
+              connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            }            
+            services.AddDbContext<BudgetDbContext>(options => options.UseNpgsql(connectionString));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,13 +48,27 @@ namespace BudgetMe.Domain
             }
 
             app.UseRouting();
-
-            app.UseAuthorization();
+            
+            UpdateDatabase(app);
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
+
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<BudgetDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
+        }
+        
     }
 }
