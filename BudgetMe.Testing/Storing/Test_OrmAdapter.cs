@@ -21,7 +21,7 @@ namespace BudgetMe.Testing.Storing
 
         //Act
         var members = _tdb.Member.ToList();
-        _tdb.Database.EnsureDeleted();
+        // _tdb.Database.EnsureDeleted();
 
         //Assert
         Assert.True(members.Count()!=0); //Should be 4. Passes.
@@ -34,7 +34,7 @@ namespace BudgetMe.Testing.Storing
         
         OrmAdapter<Test_BudgetDbContext2> _oa = new OrmAdapter<Test_BudgetDbContext2>(_tdb);
         List<Income> incomes = _oa.GetIncomes();
-        _tdb.Database.EnsureDeleted();
+        // _tdb.Database.EnsureDeleted();
 
         Assert.True(incomes.Count!=0);
       }
@@ -46,7 +46,7 @@ namespace BudgetMe.Testing.Storing
         
         OrmAdapter<Test_BudgetDbContext2> _oa = new OrmAdapter<Test_BudgetDbContext2>(_tdb);
         List<Bill> bills = _oa.GetBills();
-        _tdb.Database.EnsureDeleted();
+        // _tdb.Database.EnsureDeleted();
 
         Assert.True(bills.Count!=0);
       }
@@ -62,7 +62,7 @@ namespace BudgetMe.Testing.Storing
         bool insertincomebool = _oa.InsertIncome(new Income(){Id = 100, Name="Lockheed", Amount=10000});
         Income income = _tdb.Income.Where(m => m.Id == 100).SingleOrDefault();
         string name = income.Name;
-        _tdb.Database.EnsureDeleted();
+        // _tdb.Database.EnsureDeleted();
 
         //Assert
         Assert.True(name == "Lockheed");
@@ -97,7 +97,7 @@ namespace BudgetMe.Testing.Storing
 
         Income inc = _tdb.Income.Where(m => m.Id == 1).SingleOrDefault();
         string newName = inc.Name;
-        _tdb.Database.EnsureDeleted();
+        // _tdb.Database.EnsureDeleted();
 
         Assert.True(newName=="Great job");
       }
@@ -114,7 +114,7 @@ namespace BudgetMe.Testing.Storing
 
         Bill bill1 = _tdb.Bill.Where(b => b.Id == 1).SingleOrDefault();
         string newName = bill1.Name;
-        _tdb.Database.EnsureDeleted();
+        // _tdb.Database.EnsureDeleted();
 
         Assert.True(newName=="Orange Juice");
       }
@@ -122,11 +122,10 @@ namespace BudgetMe.Testing.Storing
       [Fact]
       public void TestOrmAdapter_Remove1()
       {
-        _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext2> _oa = new OrmAdapter<Test_BudgetDbContext2>(_tdb);
         int IncomeCount = _oa.GetIncomes().Count();
 
-        _oa.RemoveIncome(1);
+        _oa.RemoveIncome(2);
         int newIncomeCount = _oa.GetIncomes().Count();
         _tdb.Database.EnsureDeleted();
 
@@ -136,13 +135,11 @@ namespace BudgetMe.Testing.Storing
       [Fact]
       public void TestOrmAdapter_Remove2()
       {
-        _tdb.Database.EnsureCreated();
         OrmAdapter<Test_BudgetDbContext2> _oa = new OrmAdapter<Test_BudgetDbContext2>(_tdb);
         int BillCount = _oa.GetBills().Count();
 
         _oa.RemoveBill(1);
         int newBillCount = _oa.GetBills().Count();
-        _tdb.Database.EnsureDeleted();
 
         Assert.True(newBillCount==BillCount-1);
       }

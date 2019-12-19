@@ -14,22 +14,23 @@ namespace BudgetMe.Domain.Controllers
   public class BudgetController : ControllerBase
   {
     private readonly MemberService memberService = new MemberService();
-    private readonly MemberRepository<BudgetDbContext> _mr = new MemberRepository<BudgetDbContext>(new BudgetDbContext());
+    private readonly MemberRepository<BudgetDbContext> _mr;
     private readonly BudgetDbContext _db;
     public BudgetController(BudgetDbContext db)
     {
       _db =db;
+      _mr = new MemberRepository<BudgetDbContext>(db);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMember(int id)
     {
-      return await Task.FromResult(Ok(_db.Member.FirstOrDefault(p => p.Id == id)));
+      return await Task.FromResult(Ok(_mr.GetMember(id)));
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
     {
-      return await Task.FromResult(Ok(_db.Budget.FirstOrDefault(p => p.Id == id)));
+      return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
     //Income
     [HttpPost]
