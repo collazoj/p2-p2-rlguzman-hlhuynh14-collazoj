@@ -24,12 +24,10 @@ namespace BudgetMe.Domain.Controllers
       Member test = new Member();
       test.FirstName = "John";
       test.LastName = "Hancock";
-      Budget tBudget = new Budget();
-      tBudget.Id = 1;
-      tBudget.Member = test;
-      tBudget.MemberId = 1;
-      test.Budget = tBudget;
-      return await Task.FromResult(Ok(JsonConvert.SerializeObject(test)));
+      Budget hey = new Budget();
+      hey.Name = "Daddys Wallet";
+      test.Budget = hey;
+      return await Task.FromResult(Ok(test));
     }
     [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
