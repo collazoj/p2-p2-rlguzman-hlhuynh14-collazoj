@@ -32,6 +32,11 @@ namespace BudgetMe.Domain.Controllers
     {
       return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetIncome(int id)
+    {
+      return await Task.FromResult(Ok(_mr.GetIncome(id)));
+    }
     //Income
     [HttpPost]
     public async Task<IActionResult> CreateIncome(Income income)
