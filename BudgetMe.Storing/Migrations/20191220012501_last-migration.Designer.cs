@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BudgetMe.Storing.Migrations
 {
     [DbContext(typeof(BudgetDbContext))]
-    [Migration("20191220010443_last-migration")]
+    [Migration("20191220012501_last-migration")]
     partial class lastmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

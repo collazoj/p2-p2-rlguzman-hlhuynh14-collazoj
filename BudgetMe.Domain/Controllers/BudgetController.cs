@@ -27,12 +27,12 @@ namespace BudgetMe.Domain.Controllers
     {
       return await Task.FromResult(Ok(_mr.GetMember(id)));
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
     {
       return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetIncome(int id)
     {
       return await Task.FromResult(Ok(_mr.GetIncome(id)));

@@ -89,7 +89,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteIncome(int id, Income income)
         {
-        string path = $"http://app/api/Budget/DeleteIncome/{income.Id}";
+        string path = $"http://app/api/Budget/DeleteIncome/{id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
