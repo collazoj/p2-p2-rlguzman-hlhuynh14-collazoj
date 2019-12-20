@@ -131,7 +131,7 @@ namespace BudgetMe.Client.Controllers
             Income income = await GetIncome(id);
             return View(income);
         }
-        [HttpPost]
+        [HttpGet]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteIncome(int id, Income income)
         {
