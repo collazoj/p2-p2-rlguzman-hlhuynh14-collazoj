@@ -44,7 +44,7 @@ namespace BudgetMe.Storing.Models
             budget.RemainderAfterExpenses = budget.Percent * budget.RemainderAfterGoals;
             budget.Percent *= 100;
         }
-        //Goals
+        //Goalss
         public void EstimatedGoalSavings(Goal goal)
         {
             goal.EstimatedHighTotal = (goal.GoalSavingsPerMonth * goal.MonthGoals) + goal.GoalsSavings + goal.EstimatedHighLoan;
