@@ -103,12 +103,12 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-    [HttpPost("{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> DeleteBill(int id)
     {
       if (ModelState.IsValid)
       {
-        _mr.DeleteBill(1);
+        _mr.DeleteBill(id);
         return await Task.FromResult(Ok(id));
       }
       return await Task.FromResult(NotFound(id));
@@ -138,7 +138,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
-  [HttpPost("{id}")]
+  [HttpGet("{id}")]
     public async Task<IActionResult> DeleteGoal(int id)
     {
       if (ModelState.IsValid)
@@ -170,7 +170,7 @@ namespace BudgetMe.Domain.Controllers
       }
       return await Task.FromResult(NotFound());
     }
- [HttpPost("{id}")]
+ [HttpGet("{id}")]
     public async Task<IActionResult> DeleteExpense(int id)
     {
       if (ModelState.IsValid)

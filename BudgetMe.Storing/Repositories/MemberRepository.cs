@@ -115,23 +115,48 @@ namespace BudgetMe.Storing.Repositories
 
         public bool CreateBill(Bill bill)
         {
-          bill.BudgetId = 1;
-          return _oa.InsertBill(bill);
+          Bill bill2 = new Bill();
+          bill2.Amount = bill.Amount;
+          bill2.Id = 0;
+          bill2.Name = bill.Name;
+          bill2.BudgetId = null;
+          return _oa.InsertBill(bill2);
         }
         public bool CreateExpense(Expense expense)
         {
-          expense.BudgetId = 1;
-          return _oa.InsertExpense(expense);
+          Expense expense2 = new Expense();
+          expense2.Amount = expense.Amount;
+          expense2.Id = 0;
+          expense2.Percent = expense.Percent;
+          expense2.Name = expense.Name;
+          expense2.BudgetId = null;
+          return _oa.InsertExpense(expense2);
         }
         public bool CreateGoal(Goal goal)
         {
-          goal.BudgetId = 1;
+          Goal goal2 = new Goal();
+          goal2.Name = goal.Name;
+          goal2.GoalsSavings = goal.GoalsSavings;
+          goal2.GoalSavingsPerMonth = goal.GoalSavingsPerMonth;
+          goal2.MonthGoals = goal.MonthGoals;
+          goal2.LoanTermInYears = goal.LoanTermInYears;
+          goal2.InterestRate = goal.InterestRate;
+          goal2.EstimatedLowLoan = goal.EstimatedLowLoan;
+          goal2.EstimatedHighLoan = goal.EstimatedHighLoan;
+          goal2.EstimatedHighTotal = goal.EstimatedHighTotal;
+          goal2.EstimatedLowTotal = goal.EstimatedLowTotal;
+          goal2.BudgetId = null;
+          goal2.Id = 0;
           return _oa.InsertGoal(goal);
         }
         public bool CreateIncome(Income income)
         {
-          income.BudgetId = 1;
-          return _oa.InsertIncome(income);
+          Income income2 = new Income();
+          income2.Amount = income.Amount;
+          income2.Id = 0;
+          income2.Name = income.Name;
+          income2.BudgetId = null;
+          return _oa.InsertIncome(income2);
         }
 
         //Update DB object Methods
