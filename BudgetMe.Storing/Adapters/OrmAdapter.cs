@@ -76,8 +76,6 @@ namespace BudgetMe.Storing.Adapters
           _db.Member.Add(member);
           return _db.SaveChanges()==1;
         }
-
-
         //Update DB object Methods
         public bool UpdateBill(Bill bill)
         {

@@ -5,7 +5,6 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public double Amount { get; set; }
-        public Budget Budget { get; set; }
         public double GoalsSavings { get; set; }
         public double EstimatedHighLoan { get; set; }
         public double EstimatedLowLoan { get; set; }

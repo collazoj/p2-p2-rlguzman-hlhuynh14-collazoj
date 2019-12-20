@@ -7,7 +7,6 @@ namespace BudgetMe.Client.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int? MemberId { get; set; }
-        public Member Member { get; set; }
         public List<Income> IncomeList { get; set; }
         public double TotalMonthlyNetIncome { get; set; }
         public List<Bill> BillList { get; set; }

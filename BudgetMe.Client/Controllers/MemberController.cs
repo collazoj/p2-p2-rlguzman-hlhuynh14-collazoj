@@ -30,7 +30,7 @@ namespace BudgetMe.Client.Controllers
                 return View(loggedInMember);
             }
         } 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<Member> GetMember(int id)
         {
         string path = $"http://app/api/Budget/GetMember/{id}";
@@ -42,6 +42,7 @@ namespace BudgetMe.Client.Controllers
         }
         return (member);
         }
+        [HttpGet("{id}")]
         public async Task<Budget> GetBudget(int id)
         {
         string path = $"http://app/api/Budget/GetBudget/{id}";
