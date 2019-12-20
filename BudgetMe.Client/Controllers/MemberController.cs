@@ -89,7 +89,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteIncome(int id, Income income)
         {
-        string path = $"http://app/api/Budget/DeleteIncome/{income}";
+        string path = $"http://app/api/Budget/DeleteIncome/{income.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -128,7 +128,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteBill(int id, Bill bill)
         {
-        string path = $"http://app/api/Budget/DeleteBill/{bill}";
+        string path = $"http://app/api/Budget/DeleteBill/{bill.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -167,7 +167,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteGoal(int id, Goal goal)
         {
-        string path = $"http://app/api/Budget/DeleteGoal/{goal}";
+        string path = $"http://app/api/Budget/DeleteGoal/{goal.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -206,7 +206,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteExpense(int id, Expense expense)
         {
-        string path = $"http://app/api/Budget/DeleteExpense/{expense}";
+        string path = $"http://app/api/Budget/DeleteExpense/{expense.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
