@@ -117,11 +117,9 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateIncome(int id, Income income)
         {
-        string path = $"http://app/api/Budget/CreateIncome/{income}";
+        string path = $"http://app/api/Budget/CreateIncome";
         
-        var myContent = JsonConvert.SerializeObject(income);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.PostAsync(path, stringContent);
+        HttpResponseMessage response = await client.PostAsJsonAsync(path, income);
         if (response.IsSuccessStatusCode)
         {
             return RedirectToAction("SeeBudget", new { id });
@@ -156,11 +154,9 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateBill(int id, Bill bill)
         {
-        string path = $"http://app/api/Budget/CreateBill/{bill}";
+        string path = $"http://app/api/Budget/CreateBill/";
         
-        var myContent = JsonConvert.SerializeObject(bill);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.PostAsync(path, stringContent);
+        HttpResponseMessage response = await client.PostAsJsonAsync(path, bill);
         if (response.IsSuccessStatusCode)
         {
             return RedirectToAction("SeeBudget", new { id });
@@ -195,11 +191,9 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateGoal(int id, Goal goal)
         {
-        string path = $"http://app/api/Budget/CreateGoal/{goal}";
+        string path = $"http://app/api/Budget/CreateGoal/";
         
-        var myContent = JsonConvert.SerializeObject(goal);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.PostAsync(path, stringContent);
+        HttpResponseMessage response = await client.PostAsJsonAsync(path, goal);
         if (response.IsSuccessStatusCode)
         {
             return RedirectToAction("SeeBudget", new { id });
@@ -234,11 +228,9 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateExpense(int id, Expense expense)
         {
-        string path = $"http://app/api/Budget/CreateExpense/{expense}";
+        string path = $"http://app/api/Budget/CreateExpense/";
         
-        var myContent = JsonConvert.SerializeObject(expense);
-        var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.PostAsync(path, stringContent);
+        HttpResponseMessage response = await client.PostAsJsonAsync(path, expense);
         if (response.IsSuccessStatusCode)
         {
             return RedirectToAction("SeeBudget", new { id });
