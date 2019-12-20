@@ -43,7 +43,6 @@ namespace BudgetMe.Domain.Controllers
     {
       if (ModelState.IsValid)
       {
- 
         _mr.CreateIncome(income);
         return await Task.FromResult(Ok(income));
       }

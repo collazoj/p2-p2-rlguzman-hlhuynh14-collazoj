@@ -70,10 +70,10 @@ namespace BudgetMe.Storing.Repositories
           List<Budget> blist = GetBudgets();
 
           Budget budget = blist.Where(b => b.Id==id).SingleOrDefault();
-          budget.IncomeList = _db.Income.ToList();
-          budget.BillList = _db.Bill.ToList();
-          budget.GoalList = _db.Goal.ToList();
-          budget.ExpenseList =_db.Expense.ToList();
+          budget.IncomeList = GetIncomes();
+          budget.BillList = GetBills();
+          budget.GoalList = GetGoals();
+          budget.ExpenseList = GetExpenses();
           return budget;
         }
         public Bill GetBill(int id)
