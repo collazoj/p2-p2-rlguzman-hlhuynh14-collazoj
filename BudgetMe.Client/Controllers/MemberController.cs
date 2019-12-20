@@ -133,12 +133,12 @@ namespace BudgetMe.Client.Controllers
             Income income = await GetIncome(id);
             return View(income);
         }
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteIncome(int id, Income income)
         {
         string path = $"http://app/api/Budget/DeleteIncome/{income.Id}";
-        HttpResponseMessage response = await client.DeleteAsync(path);
+        HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)
         {
             return RedirectToAction("SeeBudget", new { id });
@@ -172,11 +172,11 @@ namespace BudgetMe.Client.Controllers
             Bill bill = await GetBill(id);
             return View(bill);
         }
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteBill(int id, Bill bill)
         {
-        string path = $"http://app/api/Budget/DeleteBill/{id}";
+        string path = $"http://app/api/Budget/DeleteBill/{bill.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -215,7 +215,7 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteGoal(int id, Goal goal)
         {
-        string path = $"http://app/api/Budget/DeleteGoal/{id}";
+        string path = $"http://app/api/Budget/DeleteGoal/{goal.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -250,11 +250,11 @@ namespace BudgetMe.Client.Controllers
             Expense expense = await GetExpense(id);
             return View(expense);
         }
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteExpense(int id, Expense expense)
         {
-        string path = $"http://app/api/Budget/DeleteExpense/{id}";
+        string path = $"http://app/api/Budget/DeleteExpense/{expense.Id}";
         HttpResponseMessage response = await client.DeleteAsync(path);
         if (response.IsSuccessStatusCode)
         {
@@ -263,16 +263,15 @@ namespace BudgetMe.Client.Controllers
         return RedirectToAction("SeeBudget", new { id });
         }
 
-        public async Task<Budget> Calculate(int id)
+        public async Task<IActionResult> Calculate(int id)
         {
         string path = $"http://app/api/Budget/Calculate/{id}";
-        Budget budget = null;
         HttpResponseMessage response = await client.GetAsync(path);
         if (response.IsSuccessStatusCode)
         {
-            budget = await response.Content.ReadAsAsync<Budget>();
+            return RedirectToAction("SeeBudget", new { id });
         }
-        return (budget);
+        return RedirectToAction("SeeBudget", new { id });
         }
     }   
 }
