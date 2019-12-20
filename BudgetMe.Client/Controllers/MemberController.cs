@@ -126,6 +126,25 @@ namespace BudgetMe.Client.Controllers
         }
         return RedirectToAction("SeeBudget", new { id });
         }
+
+        public async Task<IActionResult> UpdateIncome(int id)
+        {
+            Income income = await GetIncome(id);
+            return View(income);
+        }
+        [HttpPut]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateIncome(int id, Income newIncome)
+        {
+            string path = $"http://app/api/Budget/UpdateIncome/{id}";
+            HttpResponseMessage response = await client.PutAsJsonAsync(path, newIncome);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("SeeBudget", new { id });
+            }
+            return RedirectToAction("SeeBudget", new { id });
+        }
+
         public async Task<IActionResult> DeleteIncome(int id)
         {
             Income income = await GetIncome(id);
@@ -135,13 +154,13 @@ namespace BudgetMe.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteIncome(int id, Income income)
         {
-        string path = $"http://app/api/Budget/DeleteIncome/{income.Id}";
-        HttpResponseMessage response = await client.GetAsync(path);
-        if (response.IsSuccessStatusCode)
-        {
+            string path = $"http://app/api/Budget/DeleteIncome/{income.Id}";
+            HttpResponseMessage response = await client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("SeeBudget", new { id });
+            }
             return RedirectToAction("SeeBudget", new { id });
-        }
-        return RedirectToAction("SeeBudget", new { id });
         }
 
         //Bill
@@ -196,9 +215,14 @@ namespace BudgetMe.Client.Controllers
         HttpResponseMessage response = await client.PostAsJsonAsync(path, goal);
         if (response.IsSuccessStatusCode)
         {
-            return RedirectToAction("SeeBudget", new { id });
+            return RedirectToAction("CalculateGoal", new { id });
         }
         return RedirectToAction("SeeBudget", new { id });
+        }
+        public async Task<IActionResult> CalculateGoal(int id)
+        {
+            Goal goal = await GetGoal(id);
+            return View(goal);
         }
         public async Task<IActionResult> DeleteGoal(int id)
         {
