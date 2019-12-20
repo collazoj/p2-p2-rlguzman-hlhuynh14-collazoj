@@ -27,15 +27,30 @@ namespace BudgetMe.Domain.Controllers
     {
       return await Task.FromResult(Ok(_mr.GetMember(id)));
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetBudget(int id)
     {
       return await Task.FromResult(Ok(_mr.GetBudget(id)));
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetIncome(int id)
     {
       return await Task.FromResult(Ok(_mr.GetIncome(id)));
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetBill(int id)
+    {
+      return await Task.FromResult(Ok(_mr.GetBill(id)));
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetGoal(int id)
+    {
+      return await Task.FromResult(Ok(_mr.GetGoal(id)));
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetExpense(int id)
+    {
+      return await Task.FromResult(Ok(_mr.GetExpense(id)));
     }
     //Income
     [HttpPost]

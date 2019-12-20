@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BudgetMe.Storing.Migrations
 {
     [DbContext(typeof(BudgetDbContext))]
-    [Migration("20191219235454_last-migration")]
-    partial class lastmigration
+    [Migration("20191220012443_first-migration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -220,35 +220,35 @@ namespace BudgetMe.Storing.Migrations
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Bill", b =>
                 {
-                    b.HasOne("BudgetMe.Storing.Models.Budget", "Budget")
+                    b.HasOne("BudgetMe.Storing.Models.Budget", null)
                         .WithMany("BillList")
                         .HasForeignKey("BudgetId");
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Budget", b =>
                 {
-                    b.HasOne("BudgetMe.Storing.Models.Member", "Member")
+                    b.HasOne("BudgetMe.Storing.Models.Member", null)
                         .WithOne("Budget")
                         .HasForeignKey("BudgetMe.Storing.Models.Budget", "MemberId");
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Expense", b =>
                 {
-                    b.HasOne("BudgetMe.Storing.Models.Budget", "Budget")
+                    b.HasOne("BudgetMe.Storing.Models.Budget", null)
                         .WithMany("ExpenseList")
                         .HasForeignKey("BudgetId");
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Goal", b =>
                 {
-                    b.HasOne("BudgetMe.Storing.Models.Budget", "Budget")
+                    b.HasOne("BudgetMe.Storing.Models.Budget", null)
                         .WithMany("GoalList")
                         .HasForeignKey("BudgetId");
                 });
 
             modelBuilder.Entity("BudgetMe.Storing.Models.Income", b =>
                 {
-                    b.HasOne("BudgetMe.Storing.Models.Budget", "Budget")
+                    b.HasOne("BudgetMe.Storing.Models.Budget", null)
                         .WithMany("IncomeList")
                         .HasForeignKey("BudgetId");
                 });
